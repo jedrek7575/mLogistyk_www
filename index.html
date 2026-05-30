@@ -4,27 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>mLogistyk | Magia Technologii w Logistyce</title>
+    <title>mLogistyk | System spedycyjny dla Twojej firmy</title>
     <meta name="description" content="Prosty, użyteczny system logistyczny do śledzenia dostaw, zarządzania kierowcami i cyfrowego obiegu dokumentów. Zbudowany z myślą o firmach MŚP.">
     
     <link rel="icon" type="image/svg+xml" href="Images/Loga/logo.webp">
-    
     <link rel="icon" type="image/png" sizes="32x32" href="Images/Loga/logo.webp">
     <link rel="icon" type="image/png" sizes="16x16" href="Images/Loga/logo.webp">
-    
     <link rel="apple-touch-icon" sizes="180x180" href="Images/Loga/logo.webp">
     
     <link rel="manifest" href="site.webmanifest">
     
-    <!-- 1. GOOGLE FONTS (Zoptymalizowane i połączone w jeden link) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <!-- 2. GŁÓWNY ARKUSZ STYLÓW -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- IKONY GOOGLE MATERIAL SYMBOLS -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <style>
+        /* ==========================================================
+           GLOBALNE USTAWIENIA CZCIONKI ARIAL (WYMUSZENIE POGRUBIENIA)
+           ========================================================== */
+        * {
+            font-style: normal !important; /* Zero kursyw w całym dokumencie */
+        }
+
+        :root {
+            --form-accent: #6b009c; /* Jasny, dynamiczny fiolet z obrazka */
+            --form-accent-dark: #2a0040; /* Bardzo ciemny fiolet / tło */
+            --accent-glow: #d77bff; /* Jaskrawy fiolet do podświetleń */
+        }
+
+        html, body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Arial Black", Arial, sans-serif;
+            font-weight: 900;
+        }
+
+        input, select, textarea, button {
+            font-family: inherit;
+            font-weight: inherit;
+            font-size: 16px; 
+        }
+
         /* ==========================================================
            1. EFEKT "ŚWITEZIANKI" (HERO)
            ========================================================== */
@@ -38,7 +64,6 @@
             overflow: hidden;
         }
 
-        /* Kontener na Twoje zdjęcie/wideo */
         .hero-media-wrapper {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -49,12 +74,10 @@
         .hero-media-wrapper video {
             width: 100%; height: 100%;
             object-fit: cover;
-            /* TU JEST MAGIA: Blur, przyciemnienie i spadek nasycenia */
             filter: blur(2px) brightness(0.8) saturate(0.6);
-            transform: scale(1.05); /* Żeby krawędzie blura nie wychodziły poza ekran */
+            transform: scale(1.05);
         }
 
-        /* Gradient maskujący dół Hero, by płynnie przejść w resztę strony */
         .hero-overlay-fade {
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 40vh;
@@ -62,7 +85,6 @@
             z-index: 2;
         }
 
-        /* Zawartość, która się wyłania */
         .hero-content {
             position: relative;
             z-index: 3;
@@ -76,7 +98,6 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            /* Początkowy stan przed animacją */
             opacity: 0;
             filter: blur(20px);
             transform: translateY(50px) scale(0.9);
@@ -90,41 +111,29 @@
             box-shadow: 0 0 50px rgba(170, 0, 255, 0.4);
         }
 
-            .hero-logo-large h1 {
-            
+        .hero-logo-large h1 {
             font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 900;
-            
-            
-            /* Gradient zostaje, ale musi być wyraźny, żeby tekst nie zlewał się z poświatą */
             background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            
-            /* LOGIKA GLOW - BIAŁY NEON */
-            /* Warstwa 1: Delikatna poświata blisko liter */
-            /* Warstwa 2: Średnia poświata */
-            /* Warstwa 3: Szeroka, miękka poświata */
             text-shadow: 
                 0 0 10px rgba(255, 255, 255, 0.735),
                 0 0 20px rgba(255, 255, 255, 0.134),
-                0 0 40px rgb(255, 255, 255); /* Opcjonalnie: dodaj lekki akcent Twojego koloru #510068 dla głębi */
-            
+                0 0 40px rgb(255, 255, 255);
             margin: 0;
-            /* Ważne: dodajemy padding, żeby cień się nie ucinał przy dużym blurze */
             padding: 10px 0;
         }
+
         .hero-subtitle {
             margin-top: 30px;
             font-size: clamp(1.1rem, 2vw, 1.4rem);
             color: var(--text-muted);
-            font-weight: 300;
+            font-weight: 700;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
         }
 
-        /* Animacje wyłaniania */
         @keyframes emergeFromDark {
             100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
         }
@@ -140,7 +149,7 @@
             margin: 0 auto;
             padding: 40px 5% 100px;
             display: flex;
-            align-items: flex-start; /* To jest kluczowe dla działania sticky! */
+            align-items: flex-start;
             gap: 60px;
             position: relative;
             z-index: 10;
@@ -148,25 +157,25 @@
 
         .content-scroll-left {
             flex: 6;
-            padding-bottom: 20vh; /* Zapas na przewijanie */
+            padding-bottom: 20vh;
+            max-width: 100%;
         }
 
         .form-sticky-right {
             flex: 4;
             position: sticky;
-            top: calc(var(--nav-height) + 40px); /* Formularz zatrzymuje się pod navbarem */
+            top: calc(var(--nav-height) + 40px);
             height: fit-content;
         }
 
         /* ==========================================================
-           3. STYLOWANIE KONTENTU (LEWA STRONA)
+           3. STYLOWANIE KONTENTU LEWEGO
            ========================================================== */
         .text-block {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .text-block h2 {
-            font-weight: 900;
             font-size: 2.2rem;
             margin-bottom: 20px;
             color: #fff;
@@ -196,11 +205,11 @@
             position: absolute;
             left: 0;
             top: 2px;
-            color: var(--neon-accent);
+            color: var(--accent-glow); 
             font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(215, 123, 255, 0.5);
         }
 
-        /* Płynne wjeżdżanie sekcji podczas scrollowania */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(40px);
@@ -212,103 +221,322 @@
         }
 
         /* ==========================================================
+           STOS KART (STACKED CARDS) - NOWY WYGLĄD
+           ========================================================== */
+
+
+
+
+        .feature-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+        }
+        .feature-section.reverse { flex-direction: row-reverse; }
+        
+        .feature-text { flex: 1; align-self: start; gap: 25%}
+        .feature-text h2 {margin-top: 25%; margin-bottom: 25%;}
+        .feature-media { flex: 1; display: flex; justify-content: center; }
+
+        /* Ustawienia kart */
+        .stacked-cards-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px; /* Karty są teraz większe */
+            aspect-ratio: 9/16;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .app-card {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(145deg, rgba(20, 5, 30, 0.95), rgba(5, 5, 10, 0.95));
+            border: 1px solid rgba(107, 0, 156, 0.5);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgba(255,255,255,0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .app-card[data-pos="1"] { z-index: 3; transform: translateY(0) scale(1); opacity: 1; border-color: rgba(215, 123, 255, 0.8); }
+        .app-card[data-pos="2"] { z-index: 2; transform: translateY(30px) scale(0.95); opacity: 0.7; border-color: rgba(107, 0, 156, 0.4); }
+        .app-card[data-pos="3"] { z-index: 1; transform: translateY(60px) scale(0.9); opacity: 0.4; border-color: rgba(107, 0, 156, 0.2); }
+
+        /* Mobilne poprawki */
+        @media (max-width: 1000px) {
+            .feature-section, .feature-section.reverse { flex-direction: column; text-align: center; margin-bottom: 60px; }
+            .main-split-container { flex-direction: column; }
+            .form-sticky-right { position: static; width: 100%; order: -1; }
+            .stacked-cards-wrapper { height: 80vh; width: auto; }
+        }
+
+
+/* ==========================================================
+   STYLOWANIE ZACHĘTY DO KLIKNIĘCIA (.app-click)
+   ========================================================== */
+.app-click {
+    position: absolute;
+    bottom: 35px; /* Pozycjonowanie na dole karty */
+    left: 50%;
+    z-index: 10; /* Gwarantuje, że jest nad zdjęciem i innymi elementami */
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    
+    /* Efekt szkła (Glassmorphism) - nie zasłania tła, ale podbija czytelność tekstu */
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    
+    /* KLUCZOWE: Sprawia, że kliknięcie "przechodzi" przez tekst i aktywuje kartę pod nim */
+    pointer-events: none; 
+    
+    /* Podpięcie animacji pulsowania */
+    animation: pulseWhiteGlow 2.5s infinite ease-in-out;
+}
+
+/* Opcjonalnie: Ukrywa napis na kartach, które nie są na pierwszym planie 
+   (na wypadek, gdybyś wkleił klasę .app-click też do innych kart) */
+.app-card:not([data-pos="1"]) .app-click {
+    opacity: 0;
+    visibility: hidden;
+    animation: none; /* Oszczędza zasoby procesora, gdy tekst jest niewidoczny */
+}
+
+/* ==========================================================
+   ANIMACJA ŚWIETLISTEJ POŚWIATY
+   ========================================================== */
+@keyframes pulseWhiteGlow {
+    0% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+        text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05); /* Delikatnie pęcznieje */
+        
+        /* Poświata wokół przycisku (ramki) */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 
+                    0 0 25px rgba(255, 255, 255, 0.3); 
+        
+        /* Poświata samego tekstu */
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 
+                     0 0 15px rgba(255, 255, 255, 0.6); 
+                     
+        border-color: rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+        text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}
+
+
+
+
+
+        /* Tu wstawisz swoje zdjęcia */
+        .app-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+            opacity: 0.9;
+            border-radius: 24px;
+        }
+
+  
+
+
+        /* Napis instruktażowy pod kartami */
+        .click-hint {
+            position: absolute;
+            bottom: -70px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* ==========================================================
            4. PREMIUM FORMULARZ
            ========================================================== */
         .premium-form-box {
-            background: rgba(10, 10, 15, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(145deg, rgba(20, 5, 30, 0.8), rgba(5, 5, 10, 0.9));
+            border: none;
             border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 
+                        0 0 50px rgba(58, 0, 92, 0.3), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            width: 40vw; 
+            box-shadow: 0 0 20px rgba(107, 0, 156, 0.669);
         }
 
         .premium-form-box h3 {
-            
             font-size: 1.6rem;
             margin-bottom: 10px;
             text-align: center;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(107, 0, 156, 0.8);
         }
 
         .premium-form-box p.form-desc {
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
             margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .input-group .material-symbols-outlined {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 22px;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+
+        .input-group:focus-within .material-symbols-outlined {
+            color: var(--accent-glow);
         }
 
         .input-premium {
             width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            padding: 16px 20px;
-            color: #fff;
+            padding: 16px 20px 16px 48px;
+            color: #ffffff;
             font-size: 1rem;
-            margin-bottom: 15px;
             transition: all 0.3s ease;
         }
 
+        .input-premium::placeholder { color: rgba(255, 255, 255, 0.5); }
+
         .input-premium:focus {
             outline: none;
-            border-color: var(--neon-accent);
-            box-shadow: 0 0 20px rgba(170, 0, 255, 0.15);
-            background: rgba(0, 0, 0, 0.8);
+            border-color: var(--form-accent);
+            box-shadow: 0 0 20px rgba(107, 0, 156, 0.4);
+            background: rgba(20, 5, 30, 0.8);
         }
-
-        .input-premium::placeholder { color: rgba(255, 255, 255, 0.3); }
 
         textarea.input-premium {
             resize: none;
-            height: 100px;
+            height: 110px;
+            padding-top: 20px;
+        }
+
+        .toggle-group {
+            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 6px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .toggle-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-btn .material-symbols-outlined { font-size: 20px; }
+
+        .toggle-btn.active {
+            background: var(--form-accent);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(107, 0, 156, 0.5);
         }
 
         .btn-form-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            background: var(--text-main);
-            color: #000;
-            font-weight: 700;
+            background: linear-gradient(90deg, var(--form-accent-dark) 0%, var(--form-accent) 100%);
+            color: #fff;
             padding: 16px;
             border: none;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
         }
 
         .btn-form-submit:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(107, 0, 156, 0.6);
+            background: linear-gradient(90deg, var(--form-accent) 0%, #8c00cc 100%);
         }
 
-        /* Moduł wyboru Email/Telefon */
-        .toggle-group {
-            display: flex;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            padding: 5px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+        /* ==========================================================
+           MODYFIKACJE STOPKI (FOOTER)
+           ========================================================== */
+        .footer {
+            background: linear-gradient(to top, #020202 0%, rgba(20, 5, 30, 0.8) 100%) !important;
+            border-top: 1px solid rgba(107, 0, 156, 0.3) !important;
+            position: relative;
         }
 
-        .toggle-btn {
-            flex: 1;
-            padding: 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(215, 123, 255, 0.5), transparent);
         }
 
-        .toggle-btn.active {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        .footer-links a:hover {
+            color: var(--accent-glow) !important;
+            text-shadow: 0 0 8px rgba(215, 123, 255, 0.4);
         }
 
         /* ==========================================================
@@ -322,12 +550,19 @@
             .form-sticky-right {
                 position: static;
                 width: 100%;
-                order: -1; /* Na mobile formularz wskakuje POD hero, a PRZED tekstem */
+                order: -1;
                 margin-bottom: 40px;
             }
-            .content-scroll-left { padding-bottom: 50px; }
+            .premium-form-box {
+                width: 100%;
+            }
+            .content-scroll-left { 
+                padding-bottom: 50px; 
+            }
             .hero-logo-large h1 { font-size: 3rem; }
         }
+
+
     </style>
 </head>
 <body>
@@ -335,7 +570,7 @@
     <nav class="navbar" id="globalNavbar">
         <div class="nav-left">
             <a href="index.html" class="nav-logo">
-                <img src="Images/Loga/logo-white.webp">
+                <img src="Images/Loga/logo-white.webp" alt="Logo">
             </a>
         </div>
 
@@ -358,16 +593,12 @@
     </nav>
 
     <header class="hero-premium">
-<div class="hero-media-wrapper">
-    <video 
-        src="Images/Video/journey3.webm" 
-        autoplay 
-        
-        muted 
-        playsinline 
-        style="background-color: #1a052b;"
-    ></video>
-</div>
+        <div class="hero-media-wrapper">
+            <video autoplay muted playsinline style="background-color: #1a052b;">
+                <source src="Images/Video/journey3.webm" type="video/webm">
+                <source src="Images/Video/journey3.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay-fade"></div>
 
         <div class="hero-content">
@@ -380,60 +611,137 @@
     </header>
 
     <main class="main-split-container">
-        
         <div class="content-scroll-left">
             
-            <section class="text-block reveal-on-scroll">
-                <h2>Skrojone na miarę MŚP</h2>
-                <p>Jesteśmy w stanie Ci pomóc, jeżeli Twoja firma obsługuje od kilku do kilkudziesięciu dostaw dziennie i potrzebujesz prostego, użytecznego systemu pomagającego nad nimi zapanować.</p>
-                <p>Masz dość pogniecionych, wiecznie poplamionych kawą papierów? Rozumiemy to. Stworzyliśmy narzędzie, które natychmiast przenosi Twój biznes do cyfrowego świata.</p>
+            <!-- Sekcja 1: Tekst Lewo, Karty Prawo -->
+            <section class="feature-section reveal-on-scroll">
+                <div class="feature-text">
+                    <h2>Skrojone na miarę MŚP</h2>
+                    <p>Jesteśmy w stanie Ci pomóc, jeżeli Twoja firma obsługuje od kilku do kilkudziesięciu dostaw dziennie i potrzebujesz prostego, użytecznego systemu pomagającego nad nimi zapanować.</p>
+                </div>
+                <div class="feature-media">
+                    <div class="stacked-cards-wrapper">
+                         
+                        <div class="app-card" data-pos="1">
+                            <img src="Images/Grafiki/11.webp" alt="Opis funkcji">
+                           
+                            <p class="app-click">1/3</p>
+                            <span>Aplikacja</span></div>
+                        <div class="app-card" data-pos="2">
+                            <img src="Images/Grafiki/11_2.webp" alt="Opis funkcji">
+                            <p class="app-click">2/3</p>
+                            <span>Dostawy</span></div>
+                        <div class="app-card" data-pos="3">
+                            <img src="Images/Grafiki/11_3.webp" alt="Opis funkcji">
+                            <p class="app-click">3/3</p>
+                            <span>Dokumenty</span></div>
+                    </div>
+                </div>
             </section>
 
-            <section class="text-block reveal-on-scroll">
-                <h2>Czego u nas nie znajdziesz?</h2>
-                <p>Bólu głowy przy wdrożeniu. Nie interesują nas skomplikowane API integrujące Twoje dostawy z systemami, do których potrzebny jest doktorat z informatyki.</p>
-                <p>Nie chcemy, aby uruchomienie aplikacji wymagało wstrzymania sprzedaży na kwartał. Działamy tu i teraz.</p>
+            <!-- Sekcja 2: Tekst Prawo, Karty Lewo (reverse) -->
+            <section class="feature-section reverse reveal-on-scroll">
+                <div class="feature-text">
+                    <h2>Czego u nas nie znajdziesz?</h2>
+                    <p>Bólu głowy przy wdrożeniu. Nie interesują nas skomplikowane API integrujące Twoje dostawy z systemami, do których potrzebny jest doktorat z informatyki.</p>
+                </div>
+                <div class="feature-media">
+                    <div class="stacked-cards-wrapper">
+                        <div class="app-card" data-pos="1">
+                            <img src="Images/Grafiki/12.webp" alt="Opis funkcji">
+                            <p class="app-click">1/3</p>
+                            <span>Szybkość</span></div>
+                        <div class="app-card" data-pos="2">
+                            <img src="Images/Grafiki/12_2.webp" alt="Opis funkcji">
+                            <p class="app-click">2/3</p>
+                            <span>Wydajność</span></div>
+                        <div class="app-card" data-pos="3">
+                            <img src="Images/Grafiki/12_3.webp" alt="Opis funkcji">
+                            <p class="app-click">3/3</p>
+                            <span>Bezpieczeństwo</span></div>
+                    </div>
+                </div>
             </section>
 
-            <section class="text-block reveal-on-scroll">
-                <h2>Co zyskujesz od pierwszego dnia?</h2>
-                <ul class="premium-list">
-                    <li><strong>Pełna kontrola nad flotą:</strong> Śledź lokalizację kierowców w czasie rzeczywistym i zarządzaj zadaniami z poziomu biura.</li>
-                    <li><strong>Błyskawiczny obieg dokumentów:</strong> Klient składa podpis na ekranie telefonu, a dokument dostawy natychmiast trafia na skrzynkę pocztową. Zero zagubionych kartek.</li>
-                    <li><strong>Banalny interfejs:</strong> Do obsługi wystarczą podstawowe umiejętności obsługi telefonu. Posiadamy dedykowaną aplikację w Google Play.</li>
-                </ul>
+            <!-- Sekcja 3: Tekst Lewo, Karty Prawo -->
+            <section class="feature-section reveal-on-scroll">
+                <div class="feature-text">
+                    <h2>Co zyskujesz od pierwszego dnia?</h2>
+                    <ul class="premium-list">
+                        <li>Pełna kontrola nad flotą.</li>
+                        <li>Błyskawiczny obieg dokumentów.</li>
+                        <li>Banalny interfejs.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <div class="stacked-cards-wrapper">
+                        <div class="app-card" data-pos="1">
+                            <img src="Images/Grafiki/13.webp" alt="Opis funkcji">
+                            <p class="app-click">1/3</p>
+                            <span>Lokalizacja</span></div>
+                        <div class="app-card" data-pos="2">
+                            <img src="Images/Grafiki/13_2.webp" alt="Opis funkcji">
+                            <p class="app-click">2/3</p>
+                            <span>Podpisy</span></div>
+                        <div class="app-card" data-pos="3">
+                            <img src="Images/Grafiki/13_3.webp" alt="Opis funkcji">
+                            <p class="app-click">3/3</p>
+                            <span>App Native</span></div>
+                    </div>
+                </div>
             </section>
+
         </div>
 
         <div class="form-sticky-right">
             <div class="premium-form-box">
-                <h3>Gotowy na krok w przód?</h3>
-                <p class="form-desc">Nasz ekspert skontaktuje się z Tobą w ciągu 24 godzin.</p>
+                <h3>Zapytaj o dostępność konta testowego</h3>
+                <p class="form-desc">Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
 
                 <form id="premiumForm">
-                    <input type="text" class="input-premium" placeholder="Nazwa firmy" required>
-                    <input type="text" class="input-premium" placeholder="Główny cel / Wyzwanie" required>
+                    <div class="input-group">
+                        <span class="material-symbols-outlined">domain</span>
+                        <input type="text" class="input-premium" placeholder="Nazwa firmy" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <span class="material-symbols-outlined">track_changes</span>
+                        <input type="text" class="input-premium" placeholder="Cel wdrożenia systemu" required>
+                    </div>
                     
                     <div class="toggle-group">
-                        <button type="button" class="toggle-btn active" id="btn-email">E-mail</button>
-                        <button type="button" class="toggle-btn" id="btn-phone">Telefon</button>
+                        <button type="button" class="toggle-btn active" id="btn-email">
+                            <span class="material-symbols-outlined">mail</span> E-mail
+                        </button>
+                        <button type="button" class="toggle-btn" id="btn-phone">
+                            <span class="material-symbols-outlined">call</span> Telefon
+                        </button>
                     </div>
 
-                    <div id="wrapper-email">
+                    <div id="wrapper-email" class="input-group">
+                        <span class="material-symbols-outlined">alternate_email</span>
                         <input type="email" class="input-premium" id="input-email" placeholder="adres@firmowy.pl" required>
                     </div>
-                    <div id="wrapper-phone" style="display: none;">
+                    
+                    <div id="wrapper-phone" class="input-group" style="display: none;">
+                        <span class="material-symbols-outlined">smartphone</span>
                         <input type="tel" class="input-premium" id="input-phone" placeholder="+48 000 000 000">
                     </div>
 
-                    <textarea class="input-premium" placeholder="Masz dodatkowe pytania? (opcjonalnie)"></textarea>
+                    <div class="input-group">
+                        <span class="material-symbols-outlined" style="top: 22px; transform: none;">chat</span>
+                        <textarea class="input-premium" placeholder="Masz dodatkowe pytania? (opcjonalnie)"></textarea>
+                    </div>
                     
-                    <button type="submit" class="btn-form-submit">ZAMÓW PREZENTACJĘ</button>
+                    <button type="submit" class="btn-form-submit">
+                        ZAMÓW PREZENTACJĘ <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
                 </form>
 
                 <div id="success-msg" style="display:none; text-align: center; padding: 20px 0;">
-                    <h4 style="color: #00e676; font-size: 1.5rem;">Dziękujemy!</h4>
-                    <p style="color: var(--text-muted);">Skontaktujemy się niebawem.</p>
+                    <span class="material-symbols-outlined" style="font-size: 4rem; color: #b755ff;">check_circle</span>
+                    <h4 style="color: #fff; font-size: 1.5rem; margin-top: 10px;">Dziękujemy!</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Skontaktujemy się niebawem.</p>
                 </div>
             </div>
         </div>
@@ -444,13 +752,14 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                    <img src="assets/logo-square.png" alt="mLogistyk" style="width:35px; border-radius: 8px;">
-                    <span style=" font-size: 1.4rem; font-weight: bold;">mLogistyk</span>
+                    <img src="Images/Loga/logo-white.webp" alt="mLogistyk" style="width:35px; border-radius: 8px;">
+                    <span style="font-size: 1.4rem;">mLogistyk</span>
                 </div>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Przenosimy logistykę w wymiar cyfrowy.<br>Prosto, bezpiecznie, bezkompromisowo.</p>
                 <div style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-                    <p>NIP: 123-456-78-90</p>
-                    <p>ul. Technologiczna 1, 00-000 Warszawa</p>
+                    <p>Omnis Anna Kiersznowska-Jąderko</p>
+                    <p>NIP: 569-157-06-12</p>
+                    <p>ul. Podgródkowa 59, 42-470 Dziewki</p>
                 </div>
             </div>
             <div class="footer-links">
@@ -476,7 +785,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Logika formularza (Tylko dla Index)
+        // Logika formularza 
         const btnE = document.getElementById('btn-email');
         const btnP = document.getElementById('btn-phone');
         const wrapE = document.getElementById('wrapper-email');
@@ -501,6 +810,23 @@
             e.target.style.display = 'none';
             document.querySelector('.form-desc').style.display = 'none';
             document.getElementById('success-msg').style.display = 'block';
+        });
+
+        // Logika animacji układanych kart (Stacked Cards)
+        document.querySelectorAll('.stacked-cards-wrapper').forEach(wrapper => {
+            const cards = Array.from(wrapper.querySelectorAll('.app-card'));
+            
+            wrapper.addEventListener('click', () => {
+                // Po kliknięciu w cały blok przełączamy pozycje każdej karty
+                cards.forEach(card => {
+                    let currentPos = parseInt(card.getAttribute('data-pos'));
+                    // Zmiana pozycji: z 1 spada na 3, reszta przesuwa się w górę
+                    let nextPos = currentPos - 1;
+                    if (nextPos < 1) nextPos = cards.length;
+                    
+                    card.setAttribute('data-pos', nextPos);
+                });
+            });
         });
     </script>
 </body>

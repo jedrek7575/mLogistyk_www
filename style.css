@@ -28,16 +28,17 @@ body {
     padding: 0 4%;
     z-index: 1000;
     /* Stan bazowy - na hero jest przezroczysty, lekki blur */
-    background: rgba(5, 5, 5, 0.1);
+    background: rgba(5, 5, 5, 0);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     border-bottom: 1px solid transparent;
+    transition: 0.3s ease-in-out;
 }
 
 /* Stan po scrollowaniu, nakładany przez JS */
 .navbar.scrolled {
-    background: rgba(5, 5, 5, 0.85); /* Zakolorowany w 85% */
+    background: rgba(73, 13, 115, 0.291); /* Zakolorowany w 85% */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
