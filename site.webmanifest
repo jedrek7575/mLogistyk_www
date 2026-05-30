@@ -1,0 +1,21 @@
+{
+  "name": "mLogistyk | Magia Technologii w Logistyce",
+  "short_name": "mLogistyk",
+  "description": "Prosty, użyteczny system logistyczny do śledzenia dostaw, zarządzania kierowcami i cyfrowego obiegu dokumentów.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "Images/Loga/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "Images/Loga/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

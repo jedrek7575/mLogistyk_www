@@ -1,0 +1,227 @@
+:root {
+    --bg-dark: #050505; /* Prawdziwa głęboka czerń premium */
+    --neon-accent: #aa00ff;
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --nav-height: 80px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* ==========================================================
+   NAVBAR PREMIUM (Centrum CTA)
+   ========================================================== */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: var(--nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    z-index: 1000;
+    /* Stan bazowy - na hero jest przezroczysty, lekki blur */
+    background: rgba(5, 5, 5, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid transparent;
+}
+
+/* Stan po scrollowaniu, nakładany przez JS */
+.navbar.scrolled {
+    background: rgba(5, 5, 5, 0.85); /* Zakolorowany w 85% */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-left, .nav-center, .nav-right {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Pozwala perfekcyjnie wyśrodkować .nav-center */
+}
+
+.nav-left { justify-content: flex-start; }
+.nav-center { justify-content: center; }
+.nav-right { justify-content: flex-end; gap: 30px; }
+
+.nav-logo img { width: 45px; height: 45px; border-radius: 10px; }
+
+/* Centralny Przycisk Premium */
+.btn-center-cta {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.btn-center-cta:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 900;
+    transition: color 0.3s, -webkit-text-stroke 0.3s; /* Dodane płynne przejście obrysu */
+
+    /* TRIK NA SZEROKOŚĆ: Dodaje obrys o grubości 0.5px w kolorze tekstu */
+    -webkit-text-stroke: 0.5px var(--text-muted);
+}
+
+/* Ważne: Musimy pogrubić obrys również przy najechaniu myszką, gdy zmienia się kolor */
+.nav-menu a:hover, .nav-menu a.active { 
+    color: #fff; 
+    -webkit-text-stroke: 0.5px #fff;
+}
+
+.nav-menu a:hover, .nav-menu a.active { color: #fff; }
+
+/* Burger */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+.burger div {
+    width: 28px; height: 2px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* ==========================================================
+   STOPKA PREMIUM
+   ========================================================== */
+.footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 80px 5% 40px;
+    background: #020202;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-links h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+.footer-links a:hover { color: #fff; }
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 30px;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================
+   MOBILE MEDIA QUERIES (Global)
+   ========================================================== */
+@media (max-width: 900px) {
+    /* 1. Menu Mobilne - Ukryte domyślnie i przygotowane pod animację */
+    .nav-menu {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.95); /* Mocno ciemne szkło */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        padding: 30px 0;
+        gap: 25%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        
+        /* Magia płynnego pojawiania się */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 2. Menu Mobilne - Stan AKTYWNY (po kliknięciu burgera) */
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .burger { display: flex; }
+    
+    /* 3. Animacja Burgera w "X" (stan aktywny) */
+    .burger.active div:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .burger.active div:nth-child(2) {
+        opacity: 0; /* Środkowa linia znika */
+    }
+    .burger.active div:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Reszta Twoich mobilnych poprawek */
+    .nav-center {
+        /* Wymuszamy, by przycisk CTA nie został ściśnięty */
+        flex: 2;
+    }
+    
+    .btn-center-cta {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
