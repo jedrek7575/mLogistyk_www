@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin Serwisu | mLogistyk</title>
+    <meta name="description" content="Regulamin korzystania z serwisu internetowego mLogistyk.">
+    
+    <link rel="icon" type="image/svg+xml" href="Images/Loga/logo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/Loga/logo.webp">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        /* Pobieramy bazowe zmienne z Twojego głównego CSS, jeśli ich tam nie ma, definiujemy je tutaj */
+        :root {
+            --bg-dark: #05050a;
+            --form-accent: #6b009c;
+            --accent-glow: #d77bff;
+            --text-muted: #8b8b99;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+        }
+
+        * { font-style: normal !important; }
+
+        /* ==========================================================
+           STYLOWANIE KONTENERA PRAWNEGO
+           ========================================================== */
+        .legal-wrapper {
+            padding: 140px 5% 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .legal-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .legal-header h1 {
+            font-family: "Arial Black", Arial, sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(215, 123, 255, 0.3);
+            margin: 0 0 15px 0;
+        }
+
+        .legal-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .legal-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(145deg, rgba(20, 5, 30, 0.7), rgba(5, 5, 10, 0.8));
+            border: 1px solid rgba(107, 0, 156, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .legal-container h2 {
+            font-family: "Arial Black", Arial, sans-serif;
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(107, 0, 156, 0.4);
+            padding-bottom: 15px;
+        }
+
+        .legal-container h2:first-of-type { margin-top: 0; }
+
+        .legal-container h3 {
+            color: var(--accent-glow);
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .legal-container p {
+            color: #d1d1d1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: normal; /* Lepsza czytelność dla długiego tekstu */
+        }
+
+        .legal-container ul, .legal-container ol {
+            color: #d1d1d1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: normal;
+            padding-left: 20px;
+        }
+
+        .legal-container li { margin-bottom: 10px; }
+        .legal-container li::marker { color: var(--accent-glow); }
+
+        .legal-container a {
+            color: var(--accent-glow);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-glow);
+            transition: 0.3s;
+        }
+
+        .legal-container a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+            text-shadow: 0 0 10px rgba(215, 123, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .legal-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="globalNavbar">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo"><img src="Images/Loga/logo-white.webp" alt="Logo"></a>
+        </div>
+        <div class="nav-center"><a href="https://app.mlogistyk.pl" class="btn-center-cta">Przejdź do aplikacji</a></div>
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="filozofia.html">Filozofia</a></li>
+                <li><a href="o-nas.html">O nas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="legal-wrapper">
+        <div class="legal-header">
+            <h1>Regulamin Serwisu</h1>
+            <p>Ostatnia aktualizacja: Czerwiec 2026</p>
+        </div>
+
+        <div class="legal-container">
+            <h2>§ 1. Postanowienia ogólne</h2>
+            <p>1. Niniejszy regulamin określa zasady korzystania z serwisu internetowego oraz aplikacji mLogistyk, dostępnej pod adresem mlogistyk.pl oraz w sklepach z aplikacjami mobilnymi.</p>
+            <p>2. Operatorem Serwisu i Usługodawcą jest firma: <strong>Omnis Anna Kiersznowska-Jąderko</strong> z siedzibą pod adresem: ul. Podgródkowa 59, 42-470 Dziewki, NIP: 569-157-06-12 (dalej: "Usługodawca").</p>
+            <p>3. Kontakt z Usługodawcą możliwy jest za pośrednictwem formularza kontaktowego dostępnego w Serwisie lub drogą mailową na adres: biuro@mlogistyk.pl.</p>
+
+            <h2>§ 2. Rodzaj i zakres usług elektronicznych</h2>
+            <p>1. Usługodawca świadczy za pośrednictwem Serwisu następujące usługi elektroniczne:</p>
+            <ul>
+                <li>Udostępnianie informacji o produkcie mLogistyk (system spedycyjny dla MŚP).</li>
+                <li>Umożliwienie przesyłania zapytań o dostępność konta testowego (Demo) poprzez formularz kontaktowy.</li>
+                <li>Zapewnienie dostępu do panelu logowania dla aktywnych użytkowników systemu (app.mlogistyk.pl).</li>
+            </ul>
+            <p>2. Korzystanie z formularza kontaktowego jest bezpłatne i dobrowolne.</p>
+
+            <h2>§ 3. Warunki świadczenia usług i wymagania techniczne</h2>
+            <p>1. Do prawidłowego korzystania z Serwisu oraz aplikacji mLogistyk niezbędne jest:</p>
+            <ul>
+                <li>Urządzenie końcowe z dostępem do sieci Internet (komputer, smartfon, tablet).</li>
+                <li>Aktualna wersja przeglądarki internetowej (np. Chrome, Firefox, Safari, Edge) z włączoną obsługą JavaScript oraz plików Cookies.</li>
+                <li>Aktywne konto poczty elektronicznej (e-mail) w przypadku korzystania z formularza kontaktowego.</li>
+            </ul>
+            <p>2. Zakazane jest dostarczanie przez Użytkownika treści o charakterze bezprawnym, obraźliwym lub mogącym zakłócić poprawne działanie Serwisu.</p>
+
+            <h2>§ 4. Zawieranie i rozwiązywanie umów o świadczenie usług elektronicznych</h2>
+            <p>1. Umowa o świadczenie usługi polegającej na wysłaniu formularza zostaje zawarta z chwilą kliknięcia przycisku "WYŚLIJ" i ulega rozwiązaniu niezwłocznie po przesłaniu wiadomości do Usługodawcy.</p>
+            <p>2. Dostęp do pełnej wersji aplikacji mLogistyk wymaga odrębnej umowy współpracy B2B i założenia dedykowanego konta.</p>
+
+            <h2>§ 5. Prawa własności intelektualnej</h2>
+            <p>1. Wszelkie treści udostępniane w Serwisie, w tym grafiki, logotypy, kody źródłowe, interfejsy oraz bazy danych stanowią własność Usługodawcy i są chronione prawem autorskim.</p>
+            <p>2. Kopiowanie, modyfikowanie lub wykorzystywanie elementów Serwisu bez wyraźnej, pisemnej zgody Usługodawcy jest zabronione.</p>
+
+            <h2>§ 6. Postępowanie reklamacyjne</h2>
+            <p>1. Użytkownik ma prawo do składania reklamacji w sprawach związanych z funkcjonowaniem Serwisu.</p>
+            <p>2. Reklamacje należy składać drogą elektroniczną na adres e-mail Usługodawcy. Reklamacja powinna zawierać opis napotkanego problemu oraz adres e-mail zgłaszającego.</p>
+            <p>3. Usługodawca rozpatruje reklamacje w terminie 14 dni od ich wpłynęcia.</p>
+
+            <h2>§ 7. Postanowienia końcowe</h2>
+            <p>1. Usługodawca zastrzega sobie prawo do wprowadzania zmian w Regulaminie z ważnych przyczyn technicznych lub prawnych.</p>
+            <p>2. W sprawach nieuregulowanych niniejszym Regulaminem zastosowanie mają powszechnie obowiązujące przepisy prawa polskiego.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <img src="Images/Loga/logo-white.webp" alt="mLogistyk" style="width:35px; border-radius: 8px;">
+                    <span style="font-size: 1.4rem;">mLogistyk</span>
+                </div>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                    <p>Omnis Anna Kiersznowska-Jąderko</p>
+                    <p>NIP: 569-157-06-12</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Legalne</h4>
+                <ul>
+                    <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+                    <li><a href="regulamin.html">Regulamin</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
