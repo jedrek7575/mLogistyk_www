@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasza Filozofia | mLogistyk</title>
+    <meta name="description" content="Poznaj filozofię mLogistyk. Tworzymy proste, użyteczne oprogramowanie dla dostawców bez korporacyjnego bełkotu i zbędnych integracji.">
+    
+    <!-- Open Graph / Facebook / Messenger / Telegram -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mlogistyk.pl/filozofia.html">
+    <meta property="og:title" content="Nasza Filozofia | mLogistyk">
+    <meta property="og:description" content="Tworzymy proste oprogramowanie dla dostawców bez korporacyjnego bełkotu. Poznaj nasze zasady.">
+    <meta property="og:image" content="https://mlogistyk.pl/Images/Loga/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mlogistyk.pl/filozofia.html">
+    <meta property="twitter:title" content="Nasza Filozofia | mLogistyk">
+    <meta property="twitter:description" content="Tworzymy proste oprogramowanie dla dostawców bez korporacyjnego bełkotu. Poznaj nasze zasady.">
+    <meta property="twitter:image" content="https://mlogistyk.pl/Images/Loga/logo.png">
+
+    <link rel="icon" type="image/svg+xml" href="Images/Loga/logo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/Loga/logo.webp">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        /* ==========================================================
+           GLOBALNE USTAWIENIA CZCIONKI ARIAL (WYMUSZENIE POGRUBIENIA)
+           ========================================================== */
+        * {
+            font-style: normal !important;
+        }
+
+        :root {
+            --bg-dark: #05050a;
+            --form-accent: #6b009c;
+            --accent-glow: #d77bff;
+            --text-muted: #8b8b99;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Arial Black", Arial, sans-serif;
+            font-weight: 900;
+        }
+
+        a { text-decoration: none; }
+
+        /* ==========================================================
+           HERO DLA PODSTRON (Krótsze niż na stronie głównej)
+           ========================================================== */
+        .hero-subpage {
+            position: relative;
+            height: 60vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #1a052b, var(--bg-dark));
+        }
+
+        .hero-subpage::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(107, 0, 156, 0.2) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-subpage-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-subpage-content h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(215, 123, 255, 0.3);
+            margin: 0 0 20px 0;
+        }
+
+        .hero-subpage-content p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        @keyframes fadeUp {
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================
+           UKŁAD MANIFESTU (FILOZOFII)
+           ========================================================== */
+        .manifesto-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 5% 120px;
+        }
+
+        .manifesto-intro {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .manifesto-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .manifesto-intro p {
+            font-size: 1.2rem;
+            color: #d1d1d1;
+            line-height: 1.8;
+            font-weight: normal;
+        }
+
+        .manifesto-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .manifesto-card {
+            background: linear-gradient(145deg, rgba(20, 5, 30, 0.6), rgba(5, 5, 10, 0.8));
+            border: 1px solid rgba(107, 0, 156, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .manifesto-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(215, 123, 255, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(215, 123, 255, 0.1);
+        }
+
+        .manifesto-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(107, 0, 156, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(215, 123, 255, 0.3);
+        }
+
+        .manifesto-icon .material-symbols-outlined {
+            font-size: 40px;
+            color: var(--accent-glow);
+        }
+
+        .manifesto-text h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin: 0 0 15px 0;
+        }
+
+        .manifesto-text p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        /* ==========================================================
+           SEKCJA WEZWANIA DO DZIAŁANIA (CTA) NA DOLE
+           ========================================================== */
+        .bottom-cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to top, rgba(107, 0, 156, 0.1), transparent);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+
+        .bottom-cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .bottom-cta-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .btn-solid-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: linear-gradient(90deg, var(--form-accent) 0%, #a600ff 100%);
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            box-shadow: 0 0 25px rgba(170, 0, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-solid-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(170, 0, 255, 0.6);
+            color: #ffffff;
+        }
+
+        /* ==========================================================
+           RESPONSYWNOŚĆ
+           ========================================================== */
+        @media (max-width: 768px) {
+            .manifesto-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .hero-subpage { height: 50vh; }
+        }
+
+        /* Domyślne dla stopki i navbaru z Twojego CSS */
+        .footer { background: linear-gradient(to top, #020202 0%, rgba(20, 5, 30, 0.8) 100%); border-top: 1px solid rgba(107, 0, 156, 0.3); position: relative; padding: 40px 5%; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(215, 123, 255, 0.5), transparent); }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .footer-brand { flex: 2; min-width: 250px; }
+        .footer-links { flex: 1; min-width: 150px; }
+        .footer-links h4 { color: #fff; margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-muted); transition: 0.3s; font-weight: normal; }
+        .footer-links a:hover { color: var(--accent-glow) !important; text-shadow: 0 0 8px rgba(215, 123, 255, 0.4); }
+        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); font-size: 0.9rem; font-weight: normal; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="globalNavbar">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">
+                <img src="Images/Loga/logo-white.webp" alt="Logo">
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <a href="https://app.mlogistyk.pl" class="btn-center-cta">ZALOGUJ SIĘ</a>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="filozofia.html" class="active">Filozofia</a></li>
+                <li><a href="o-nas.html">O nas</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-subpage">
+        <div class="hero-subpage-content">
+            <h1>Mniej znaczy więcej.</h1>
+            <p>Oprogramowanie powinno pracować dla Ciebie, a&nbsp;nie Ty dla oprogramowania. Zobacz, w&nbsp;jaki sposób działa mLogistyk.</p>
+        </div>
+    </header>
+
+    <main class="manifesto-container">
+        
+        <div class="manifesto-intro">
+            <h2>Lek na "przekombinowane" oprogramowanie dla logistyki</h2>
+            <p>Obserwując rynek systemów logistycznych, zauważyliśmy jeden potężny problem. Programy stają się wielkimi "kombajnami", które potrafią wszystko, ale żeby dodać prostą dostawę, trzeba przejść przez pięć okienek i&nbsp;ukończyć tygodniowe szkolenie. Postanowiliśmy z&nbsp;tym skończyć. mLogistyk powstał z&nbsp;myślą o&nbsp;małych i&nbsp;średnich firmach, które nie mają czasu na skomplikowane wdrożenia. Naszym celem jest usprawnienie dostaw i&nbsp;umożliwienie zebrania cyfrowego pokwitowania, a&nbsp;nie generowanie sterty wirtualnych dokumentów.</p>
+        </div>
+
+        <div class="manifesto-grid">
+            
+            <!-- KARTA 1 -->
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <span class="material-symbols-outlined">block</span>
+                </div>
+                <div class="manifesto-text">
+                    <h3>Zero zbędnych integracji</h3>
+                    <p>Nie integrujemy się z&nbsp;KSeF. Nie wchodzimy w&nbsp;drogę Twojej księgowości. Nie wysyłamy danych do potężnych systemów ERP lub CRM, z&nbsp;których i&nbsp;tak nie korzystasz. mLogistyk to samodzielne, lekkie narzędzie, które robi dokładnie to, do czego zostało stworzone: śledzi dostawę i&nbsp;zapisuje elektroniczny podpis odbiorcy.</p>
+                </div>
+            </div>
+
+            <!-- KARTA 2 -->
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <span class="material-symbols-outlined">accessibility_new</span>
+                </div>
+                <div class="manifesto-text">
+                    <h3>Szacunek do czasu kierowcy</h3>
+                    <p>Z&nbsp;aplikacji korzystają ludzie, a&nbsp;nie roboty. Często są to kierowcy z&nbsp;wieloletnim stażem, dla których skomplikowane systemy to niepotrzebny wymysł, którego nie potrafią obsługiwać. Dlatego nasz program stawia na prostotę. Duże przyciski, jasne komendy i&nbsp;żadnych ukrytych menu. System ma pomagać w&nbsp;dostawie, a&nbsp;nie rozpraszać kierowcę w&nbsp;trasie.</p>
+                </div>
+            </div>
+
+            <!-- KARTA 3 -->
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <span class="material-symbols-outlined">handshake</span>
+                </div>
+                <div class="manifesto-text">
+                    <h3>Uczciwe zasady współpracy</h3>
+                    <p>Brak ukrytych opłat za wdrożenie i&nbsp;przymusowych szkoleń za tysiące złotych. Nasz model to uczciwy abonament dopasowany do wielkości Twojej floty. Płacisz za realną wartość, którą system wnosi do Twojego biznesu od pierwszego dnia działania.</p>
+                </div>
+            </div>
+
+            <!-- KARTA 4 -->
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <span class="material-symbols-outlined">eco</span>
+                </div>
+                <div class="manifesto-text">
+                    <h3>Cyfryzacja, która ma sens</h3>
+                    <p>Ograniczamy zużycie papieru do zera, nie dlatego, że to modne, ale dlatego, że to po prostu wygodne. Zagubione kartki z&nbsp;potwierdzeniem dostawy to utracone pieniądze i&nbsp;opóźnienia w&nbsp;fakturach. U&nbsp;nas podpis ląduje w&nbsp;bazie danych w&nbsp;formacie cyfrowym szybciej, niż kierowca zdąży wrócić do samochodu.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <section class="bottom-cta-section">
+        <h2>Gotowy na logistykę bez komplikacji?</h2>
+        <p>Sprawdź mLogistyka w&nbsp;akcji i&nbsp;zobacz, ile czasu możesz zaoszczędzić każdego dnia.</p>
+        <a href="index.html#formularz-kontaktowy" class="btn-solid-cta">
+            Rozpocznij darmowy test 
+        </a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <img src="Images/Loga/logo-white.webp" alt="mLogistyk" style="width:35px; border-radius: 8px;">
+                    <span style="font-size: 1.4rem;">mLogistyk</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Przenosimy logistykę w&nbsp;wymiar cyfrowy.<br>Prosto, bezpiecznie, bezkompromisowo.</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                    <p>Omnis Anna Kiersznowska-Jąderko</p>
+                    <p>NIP: 569-157-06-12</p>
+                    <p>ul. Podgródkowa 59, 42-470 Dziewki</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platforma</h4>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="filozofia.html" class="active">Filozofia</a></li>
+                    <li><a href="o-nas.html">O nas</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legalne</h4>
+                <ul>
+                    <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+                    <li><a href="regulamin.html">Regulamin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 mLogistyk. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

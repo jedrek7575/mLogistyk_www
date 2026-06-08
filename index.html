@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>mLogistyk | System spedycyjny dla Twojej firmy</title>
-    <meta name="description" content="Prosty, użyteczny system logistyczny do śledzenia dostaw, zarządzania kierowcami i cyfrowego obiegu dokumentów. Zbudowany z myślą o firmach MŚP.">
-    
+
+    <title>mLogistyk | Prosta aplikacja do zarządzania dostawami i kierowcami</title>
+    <meta name="description" content="Prosty program do zarządzania dostawami. Śledzenie GPS, elektroniczne potwierdzenie dostawy i wirtualny magazyn. Bez zbędnych integracji.">
+   
     <link rel="icon" type="image/svg+xml" href="Images/Loga/logo.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Images/Loga/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Images/Loga/logo.png">
@@ -26,15 +27,15 @@
 <!-- Open Graph / Facebook / Messenger / Telegram -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mlogistyk.pl/">
-<meta property="og:title" content="mLogistyk | System spedycyjny dla Twojej firmy">
-<meta property="og:description" content="Prosty w obsłudze system logistyczny do śledzenia dostaw, zarządzania kierowcami i cyfrowej archiwizacji dokumentów.">
+<meta property="og:title" content="mLogistyk | Prosta aplikacja do zarządzania dostawami">
+<meta property="og:description" content="Prosty program dla kierowców i dyspozytorów. Śledzenie GPS, wirtualny magazyn i e-podpis. Zero zbędnych integracji.">
 <meta property="og:image" content="https://mlogistyk.pl/Images/Loga/logo.png">
 
-<!-- Twitter (często zaciąga je też np. Discord czy iMessage) -->
+<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://mlogistyk.pl/">
-<meta property="twitter:title" content="mLogistyk | System spedycyjny dla Twojej firmy">
-<meta property="twitter:description" content="Prosty w obsłudze system logistyczny do śledzenia dostaw, zarządzania kierowcami i cyfrowej archiwizacji dokumentów.">
+<meta property="twitter:title" content="mLogistyk | Prosta aplikacja do zarządzania dostawami">
+<meta property="twitter:description" content="Prosty program dla kierowców i dyspozytorów. Śledzenie GPS, wirtualny magazyn i e-podpis. Zero zbędnych integracji.">
 <meta property="twitter:image" content="https://mlogistyk.pl/Images/Loga/logo.png">
 
 
@@ -59,6 +60,7 @@
             font-weight: 700;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -162,6 +164,57 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+/* ==========================================================
+           PRZYCISK CTA W SEKCJI HERO (PREMIUM GLASS)
+           ========================================================== */
+        .hero-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+            padding: 16px 40px;
+            
+            /* Szklany efekt wtapiający się w tło ze screena */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* Animacja wejścia */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+        }
+
+        .hero-cta-btn:hover {
+            background: #ffffff; /* Pełna biel po najechaniu */
+            color: var(--form-accent-dark); /* Ciemny fiolet z roota dla tekstu */
+            border-color: #ffffff;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
+        }
+        
+        .hero-cta-btn .material-symbols-outlined {
+            font-size: 24px;
+            animation: bounceDown 2s infinite ease-in-out;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
         /* ==========================================================
            2. ASYMETRYCZNY UKŁAD (STICKY FORM)
            ========================================================== */
@@ -242,6 +295,78 @@
         }
 
         /* ==========================================================
+   SEKCJA DLA KOGO (AUDIENCE CARDS)
+   ========================================================== */
+.target-audience-section {
+    margin-bottom: 80px;
+}
+
+.audience-title {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 25px;
+    
+    letter-spacing: 1px;
+    font-weight: 900;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.audience-card {
+    background: rgba(20, 5, 30, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.audience-card:hover {
+    background: rgba(107, 0, 156, 0.2);
+    border-color: rgba(215, 123, 255, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(215, 123, 255, 0.1);
+}
+
+.audience-card .material-symbols-outlined {
+    font-size: 32px;
+    color: var(--accent-glow);
+    margin-bottom: 15px;
+    background: rgba(107, 0, 156, 0.3);
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.audience-card h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+}
+
+.audience-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .audience-grid {
+        grid-template-columns: 1fr; /* Na komórkach jedna kolumna */
+    }
+}
+
+        /* ==========================================================
            STOS KART (STACKED CARDS) - NOWY WYGLĄD
            ========================================================== */
 
@@ -306,7 +431,7 @@
         @media (max-width: 1000px) {
             .feature-section, .feature-section.reverse { flex-direction: column; text-align: center; margin-bottom: 60px; }
             .main-split-container { flex-direction: column; }
-            .form-sticky-right { position: static; width: 100%; order: -1; }
+            .form-sticky-right { position: static; width: 100%; margin-top: 40px; }
             .stacked-cards-wrapper { height: 80vh; width: auto; }
         }
 
@@ -425,6 +550,7 @@
             border: none;
             border-radius: 24px;
             padding: 40px;
+            padding-bottom: 10px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 
                         0 0 50px rgba(58, 0, 92, 0.3), 
                         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -583,7 +709,7 @@
             .form-sticky-right {
                 position: static;
                 width: 100%;
-                order: -1;
+                order: 1;
                 margin-bottom: 40px;
             }
             .premium-form-box {
@@ -608,7 +734,7 @@
         </div>
 
         <div class="nav-center">
-            <a href="https://app.mlogistyk.pl" class="btn-center-cta">Przejdź do aplikacji</a>
+            <a href="https://app.mlogistyk.pl" class="btn-center-cta">ZALOGUJ SIĘ</a>
         </div>
 
         <div class="nav-right">
@@ -640,91 +766,121 @@
                 <h1>mLogistyk</h1>
             </div>
             <p class="hero-subtitle">Zarządzaj swoją firmą, bez względu na to, gdzie jesteś.<br>Wdrażasz za darmo w&nbsp;jeden dzień. Zyskujesz pełną kontrolę na zawsze.</p>
+            <a href="#formularz-kontaktowy" class="hero-cta-btn">
+                Przetestuj za darmo 
+            </a>
         </div>
     </header>
 
     <main class="main-split-container">
         <div class="content-scroll-left">
             <div class="left-header">
-                <h1>Logistyka zawsze w zasięgu ręki</h1>
-                <p>- W trasie za pomocą łatwej w obsłudze aplikacji mobilnej. </br>- W biurze logując się poprzez dostosowany do pracy na dużym monitorze panel webowy. </p>
-          <div class="left-header-img">
-            <img>
-            <img>
-          </div>
-          
+                <h1>Prosty program do zarządzania dostawami w Twojej firmie</h1>
+<ul class="premium-list" style="margin-top: 20px;">
+    <li>Idealna aplikacja dla kierowców i dyspozytorów (przeglądarka&nbsp;+&nbsp;smartfon).</li>
+    <li>Elektroniczne potwierdzenia dostaw i&nbsp;nielimitowane archiwum w&nbsp;chmurze.</li>
+    <li>Zero zbędnych integracji. Wdrażasz w 1 dzień.</li>
+</ul>
             </div>
+
+            <div class="target-audience-section reveal-on-scroll">
+    <h3 class="audience-title">Dla kogo stworzyliśmy mLogistyka?</h3>
+    <div class="audience-grid">
+        <div class="audience-card">
+            <span class="material-symbols-outlined">local_pizza</span>
+            <h4>Gastronomia</h4>
+            <p>Pizzerie i catering dietetyczny. Idealne do śledzenia dostawców i&nbsp;zarządzania czasem dojazdu.</p>
+        </div>
+        <div class="audience-card">
+            <span class="material-symbols-outlined">handyman</span>
+            <h4>Hurtownicy</h4>
+            <p>Dostawy materiałów budowlanych. Elektroniczny podpis klienta zabezpiecza odbiór towaru na miejscu.</p>
+        </div>
+        <div class="audience-card">
+            <span class="material-symbols-outlined">propane_tank</span>
+            <h4>Dystrybucja Specjalistyczna</h4>
+            <p>Dostawcy paliw, cieczy i gazów. Pełna kontrola nad wirtualnym magazynem w trasie.</p>
+        </div>
+        <div class="audience-card">
+            <span class="material-symbols-outlined">local_shipping</span>
+            <h4>Lokalny E-commerce</h4>
+            <p>Sklepy internetowe z własnym dowozem. Zero integracji, natychmiastowe wdrożenie kierowców.</p>
+        </div>
+    </div>
+</div>
             
             <!-- Sekcja 1: Tekst Lewo, Karty Prawo -->
             <section class="feature-section reveal-on-scroll">
                 <div class="feature-text">
-                    <h2>Pełna kontrola nad flotą i magazynem</h2>
+                    <h2>Śledzenie kierowców GPS i wirtualny magazyn</h2>
                     <p>Śledź lokalizację kierowców w&nbsp;czasie rzeczywistym, zarządzaj zadaniami z&nbsp;poziomu biura i&nbsp;miej stały wgląd w&nbsp;stany magazynowe.</p>
                 </div>
                 <div class="feature-media">
                     <div class="stacked-cards-wrapper">
                          
                         <div class="app-card" data-pos="1">
-                            <img src="Images/Grafiki/11.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/11.webp" alt="Aplikacja mobilna mLogistyk do zarządzania dostawami na telefonie">
                            
                             <p class="app-click">1/3</p>
                             <span>Aplikacja</span></div>
                         <div class="app-card" data-pos="2">
-                            <img src="Images/Grafiki/11_2.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/11_2.webp" alt="Widok mapy i śledzenie kierowcy w czasie rzeczywistym GPS">
                             <p class="app-click">2/3</p>
                             <span>Dostawy</span></div>
                         <div class="app-card" data-pos="3">
-                            <img src="Images/Grafiki/11_3.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/11_3.webp" alt="Elektroniczny podpis klienta na dokumencie dostawy w formacie e-POD">
                             <p class="app-click">3/3</p>
                             <span>Dokumenty</span></div>
                     </div>
                 </div>
             </section>
 
-            <!-- Sekcja 2: Tekst Prawo, Karty Lewo (reverse) -->
+<!-- Sekcja 2: Tekst Prawo, Karty Lewo (reverse) -->
             <section class="feature-section reverse reveal-on-scroll">
                 <div class="feature-text">
-                    <h2>Błyskawiczny obieg dokumentów</h2>
+                    <h2>Elektroniczne potwierdzenie dostawy - podpis na ekranie</h2>
                     <p>Kierowca realizuje dostawę, klient składa podpis na ekranie telefonu. W&nbsp;ciągu kilku minut dokument dostawy trafia na skrzynkę pocztową. Zero zgubionych kartek.</p>
                 </div>
                 <div class="feature-media">
                     <div class="stacked-cards-wrapper">
                         <div class="app-card" data-pos="1">
-                            <img src="Images/Grafiki/12.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/12.webp" alt="Natychmiastowe zatwierdzenie dostawy u klienta w systemie mLogistyk">
                             <p class="app-click">1/3</p>
                             <span>Szybkość</span></div>
                         <div class="app-card" data-pos="2">
-                            <img src="Images/Grafiki/12_2.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/12_2.webp" alt="Cyfrowy obieg dokumentów przewozowych dla małych i średnich firm">
                             <p class="app-click">2/3</p>
                             <span>Wydajność</span></div>
                         <div class="app-card" data-pos="3">
-                            <img src="Images/Grafiki/12_3.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/12_3.webp" alt="Bezpieczna archiwizacja i automatyczna wysyłka potwierdzeń dostawy na e-mail">
                             <p class="app-click">3/3</p>
                             <span>Bezpieczeństwo</span></div>
                     </div>
                 </div>
             </section>
 
-            <!-- Sekcja 3: Tekst Lewo, Karty Prawo -->
+<!-- Sekcja 3: Tekst Lewo, Karty Prawo -->
             <section class="feature-section reveal-on-scroll">
                 <div class="feature-text">
-                    <h2>Przyjazny interface</h2>
-                    <ul class="premium-list">
-<p>Do użytku programu mLogistyk wystarczą podstawowe umiejętności obsługi telefonu czy laptopa. Jest ponadto dostosowany do pracy na dowolnym systemie za pośrednictwem przeklądarki. W&nbsp;sklepie play dostępna jest również dedykowana aplikacja.</p>
-                    </ul>
+                    <h2>Prosta w obsłudze aplikacja mobilna dla kierowcy</h2>
+<ul class="premium-list">
+    <li>Wystarczą podstawowe umiejętności obsługi smartfona.</li>
+    <li>Działa na każdym komputerze przez przeglądarkę WWW.</li>
+    <li>Dedykowana, szybka aplikacja dla kierowców w Google Play.</li>
+</ul>
                 </div>
                 <div class="feature-media">
                     <div class="stacked-cards-wrapper">
                         <div class="app-card" data-pos="1">
-                            <img src="Images/Grafiki/13.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/13.webp" alt="Prosty interfejs panelu dyspozytora do zarządzania kierowcami">
                             <p class="app-click">1/3</p>
                             <span>Lokalizacja</span></div>
                         <div class="app-card" data-pos="2">
-                            <img src="Images/Grafiki/13_2.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/13_2.webp" alt="Wygodne odbieranie podpisów elektronicznych na ekranie smartfona">
                             <p class="app-click">2/3</p>
                             <span>Podpisy</span></div>
                         <div class="app-card" data-pos="3">
-                            <img src="Images/Grafiki/13_3.webp" alt="Opis funkcji">
+                            <img src="Images/Grafiki/13_3.webp" alt="Aplikacja mLogistyk dla kierowców dostawców w Google Play">
                             <p class="app-click">3/3</p>
                             <span>App Native</span></div>
                     </div>
@@ -733,11 +889,12 @@
 
         </div>
 
-        <div class="form-sticky-right">
+       <div class="form-sticky-right" id="formularz-kontaktowy">
             <div class="premium-form-box">
                 <h3>Zapytaj o dostępność konta testowego</h3>
-                <p class="form-desc">Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+                         <p class="form-desc" style="color: var(--accent-glow); font-weight: bold; margin-top: 5%; font-size: 0.8rem; text-transform: uppercase;">Sprawdź system za darmo, bez zobowiązań.</p>
 
+                
                 <form id="premiumForm">
                     <div class="input-group">
                         <span class="material-symbols-outlined">domain</span>
@@ -776,7 +933,12 @@
                     <button type="submit" class="btn-form-submit">
                         WYŚLIJ <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
+                    <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; text-align: center; margin-top: 15px; margin-bottom: 0; line-height: 1.4;">
+    Wysyłając zapytanie, akceptujesz <a href="polityka-prywatnosci.html" style="color: var(--accent-glow); text-decoration: none;">Politykę Prywatności</a>.
+</p>
+           
                 </form>
+                
 
                 <div id="success-msg" style="display:none; text-align: center; padding: 20px 0;">
                     <span class="material-symbols-outlined" style="font-size: 4rem; color: #b755ff;">check_circle</span>
@@ -813,7 +975,7 @@
             <div class="footer-links">
                 <h4>Legalne</h4>
                 <ul>
-                    <li><a href="polityka_prywatnosci.html">Polityka prywatności</a></li>
+                    <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
                     <li><a href="regulamin.html">Regulamin</a></li>
                 </ul>
             </div>
@@ -825,6 +987,7 @@
 
     <script src="script.js"></script>
     <script>
+        
         // Logika formularza 
         const btnE = document.getElementById('btn-email');
         const btnP = document.getElementById('btn-phone');
@@ -867,6 +1030,18 @@
                     card.setAttribute('data-pos', nextPos);
                 });
             });
+        });
+
+        // Płynne przewijanie do formularza (CTA Hero)
+        document.querySelector('.hero-cta-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetForm = document.getElementById('formularz-kontaktowy');
+            if (targetForm) {
+                // Offset -100px żeby navbar nie zasłonił formularza
+                const yOffset = -100; 
+                const y = targetForm.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
         });
     </script>
 </body>
