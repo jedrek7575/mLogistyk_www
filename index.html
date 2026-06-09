@@ -1027,12 +1027,12 @@
     </nav>
 
     <header class="hero-premium">
-        <div class="hero-media-wrapper">
-            <video autoplay muted playsinline style="background-color: #1a052b;">
-                <source src="Images/Video/journey3.webm" type="video/webm">
-                <source src="Images/Video/journey3.mp4" type="video/mp4">
-            </video>
-        </div>
+<div class="hero-media-wrapper">
+    <video id="heroVideo" muted playsinline style="background-color: #1a052b;">
+        <source src="Images/Video/journey3.webm" type="video/webm">
+        <source src="Images/Video/journey3.mp4" type="video/mp4">
+    </video>
+</div>
         <div class="hero-overlay-fade"></div>
 
         <div class="hero-content">
@@ -1392,25 +1392,35 @@
 
 
 
-        // ==========================================================
-// LOGIKA COOKIE BANNERA Z WYBOREM (RODO COMPLIANT)
+// ==========================================================
+// LOGIKA COOKIE BANNERA Z WYBOREM (RODO COMPLIANT) & KONTROLA WIDEO
 // ==========================================================
 document.addEventListener("DOMContentLoaded", () => {
     const cookieOverlay = document.getElementById('cookie-wall-overlay');
     const btnSaveSelected = document.getElementById('btn-cookie-save');
     const btnAcceptAll = document.getElementById('btn-cookie-accept-all');
     const toggleOptional = document.getElementById('cookie-optional');
+    
+    // Nowa zmienna do sterowania filmem
+    const heroVideo = document.getElementById('heroVideo');
 
     // Sprawdzenie, czy użytkownik podjął już decyzję (obecność w LocalStorage)
     const savedConsent = localStorage.getItem('mlogistyk_cookies_preferences');
 
     if (!savedConsent) {
+        // Użytkownik nowy - pokazujemy banner
         // Zablokuj przewijanie tła
         document.body.style.overflow = 'hidden';
         
         setTimeout(() => {
             cookieOverlay.classList.add('is-active');
         }, 300);
+    } else {
+        // Użytkownik już zaakceptował cookies wcześniej
+        // Odpalamy wideo od razu!
+        if (heroVideo) {
+            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
+        }
     }
 
     // Funkcja zapisująca wybór i zamykająca okno
@@ -1424,6 +1434,12 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Animacja zamykania
         cookieOverlay.classList.remove('is-active');
+        
+        // 🔥 W TYM MIEJSCU ODPALAMY WIDEO (zanim modal całkowicie zniknie)
+        if (heroVideo) {
+            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
+        }
+
         setTimeout(() => {
             cookieOverlay.style.display = 'none';
             document.body.style.overflow = ''; // Odblokuj przewijanie
@@ -1434,15 +1450,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Akcja: Zapisz wybrane (uwzględnia stan suwaka)
-    btnSaveSelected.addEventListener('click', () => {
-        saveAndClose(toggleOptional.checked);
-    });
+    if(btnSaveSelected) {
+        btnSaveSelected.addEventListener('click', () => {
+            saveAndClose(toggleOptional.checked);
+        });
+    }
 
     // Akcja: Akceptuj wszystkie (nadpisuje suwak i daje zgodę na wszystko)
-    btnAcceptAll.addEventListener('click', () => {
-        toggleOptional.checked = true; // Dla spójności wizualnej (jeśli okno zniknie powoli)
-        saveAndClose(true);
-    });
+    if(btnAcceptAll) {
+        btnAcceptAll.addEventListener('click', () => {
+            toggleOptional.checked = true; // Dla spójności wizualnej
+            saveAndClose(true);
+        });
+    }
 });
     </script>
 </body>
