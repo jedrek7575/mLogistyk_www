@@ -729,7 +729,7 @@
 
  
 
-        /* ==========================================================
+ /* ==========================================================
    STYLOWANIE COOKIE BANNERA Z SUWAKAMI
    ========================================================== */
 .cookie-overlay {
@@ -745,6 +745,11 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    
+    /* Gwarancja odstępu od krawędzi i swobodne scrollowanie */
+    padding: 20px; 
+    box-sizing: border-box;
+    overflow-y: auto; 
 }
 
 .cookie-overlay.is-active {
@@ -758,11 +763,31 @@
     border-radius: 24px;
     padding: 35px;
     max-width: 500px;
-    width: 90%;
+    width: 100%; /* Ustawione na 100%, bo overlay ma już padding z boków */
     text-align: center;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(107, 0, 156, 0.3);
     transform: translateY(40px) scale(0.95);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Zabezpieczenia dla małych ekranów */
+    margin: auto; /* Zapobiega ucinaniu górnej części przy scrollowaniu */
+    max-height: calc(100vh - 40px); /* Modal nigdy nie będzie większy niż ekran minus marginesy */
+    overflow-y: auto; /* Włącza wewnętrzny scroll, gdy ekran jest ekstremalnie mały */
+}
+
+/* Stylizacja paska przewijania wewnątrz modala (Premium Look) */
+.cookie-modal::-webkit-scrollbar {
+    width: 6px;
+}
+.cookie-modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+.cookie-modal::-webkit-scrollbar-thumb {
+    background: rgba(215, 123, 255, 0.3);
+    border-radius: 10px;
+}
+.cookie-modal::-webkit-scrollbar-thumb:hover {
+    background: var(--form-accent);
 }
 
 .cookie-overlay.is-active .cookie-modal {
@@ -912,6 +937,63 @@
     text-decoration: underline;
 }
 
+
+/* ==========================================================
+   RESPONSYWNOŚĆ COOKIE BANNERA (Mobile & Tablet)
+   ========================================================== */
+@media (max-width: 1000px) {
+    .cookie-overlay {
+        padding: 15px; /* Minimalny bezpieczny odstęp od krawędzi telefonu */
+    }
+
+    .cookie-modal {
+        padding: 25px 20px; /* Zmniejszony padding wewnętrzny modala */
+        border-radius: 20px;
+    }
+
+    .cookie-icon {
+        font-size: 32px !important; /* Mniejsza ikona */
+        margin-bottom: 10px;
+    }
+
+    .cookie-modal h3 {
+        font-size: 1.35rem; /* Mniejszy nagłówek */
+    }
+
+    .cookie-modal p {
+        font-size: 0.85rem; /* Drobniejszy tekst objaśnienia */
+        margin-bottom: 20px;
+    }
+
+    .cookie-options-container {
+        gap: 10px; /* Ciaśniejsze ułożenie kafelków z suwakami */
+        margin-bottom: 20px;
+    }
+
+    .cookie-row {
+        padding: 12px 15px; /* Chudsze wiersze suwaków */
+        border-radius: 12px;
+    }
+
+    .cookie-info strong {
+        font-size: 0.9rem;
+    }
+
+    .cookie-info span {
+        font-size: 0.75rem; /* Minimalny czytelny rozmiar dla opisów */
+    }
+
+    /* Dopasowanie przycisków */
+    .cookie-btn-primary {
+        padding: 14px;
+        font-size: 0.95rem; /* Zmniejszony tekst głównego przycisku */
+    }
+
+    .cookie-btn-secondary {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+}
 
 
 
