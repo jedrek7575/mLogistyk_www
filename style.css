@@ -168,7 +168,7 @@ body {
     /* 1. Menu Mobilne - Ukryte domyślnie i przygotowane pod animację */
     .nav-menu {
         position: absolute;
-        top: var(--nav-height);
+        top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
