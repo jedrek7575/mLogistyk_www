@@ -1170,49 +1170,48 @@
                          <p class="form-desc" style="color: var(--accent-glow); font-weight: bold; margin-top: 5%; font-size: 0.8rem; text-transform: uppercase;">Sprawdź system za darmo, bez zobowiązań.</p>
 
                 
-                <form id="premiumForm">
-                    <div class="input-group">
-                        <span class="material-symbols-outlined">domain</span>
-                        <input type="text" class="input-premium" placeholder="Nazwa firmy" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <span class="material-symbols-outlined">track_changes</span>
-                        <input type="text" class="input-premium" placeholder="Cel wdrożenia systemu" required>
-                    </div>
-                    
-                    <div class="toggle-group">
-                        <button type="button" class="toggle-btn active" id="btn-email">
-                            <span class="material-symbols-outlined">mail</span> E-mail
-                        </button>
-                        <button type="button" class="toggle-btn" id="btn-phone">
-                            <span class="material-symbols-outlined">call</span> Telefon
-                        </button>
-                    </div>
+                    <form id="premiumForm">
+                        <div class="input-group">
+                            <span class="material-symbols-outlined">domain</span>
+                            <input type="text" id="input-nazwa" class="input-premium" placeholder="Nazwa firmy" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="material-symbols-outlined">track_changes</span>
+                            <input type="text" id="input-wyzwania" class="input-premium" placeholder="Cel wdrożenia systemu" required>
+                        </div>
+                        
+                        <div class="toggle-group">
+                            <button type="button" class="toggle-btn active" id="btn-email">
+                                <span class="material-symbols-outlined">mail</span> E-mail
+                            </button>
+                            <button type="button" class="toggle-btn" id="btn-phone">
+                                <span class="material-symbols-outlined">call</span> Telefon
+                            </button>
+                        </div>
 
-                    <div id="wrapper-email" class="input-group">
-                        <span class="material-symbols-outlined">alternate_email</span>
-                        <input type="email" class="input-premium" id="input-email" placeholder="adres@firmowy.pl" required>
-                    </div>
-                    
-                    <div id="wrapper-phone" class="input-group" style="display: none;">
-                        <span class="material-symbols-outlined">smartphone</span>
-                        <input type="tel" class="input-premium" id="input-phone" placeholder="+48 000 000 000">
-                    </div>
+                        <div id="wrapper-email" class="input-group">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                            <input type="email" class="input-premium" id="input-email" placeholder="adres@firmowy.pl" required>
+                        </div>
+                        
+                        <div id="wrapper-phone" class="input-group" style="display: none;">
+                            <span class="material-symbols-outlined">smartphone</span>
+                            <input type="tel" class="input-premium" id="input-phone" placeholder="+48 000 000 000">
+                        </div>
 
-                    <div class="input-group">
-                        <span class="material-symbols-outlined" style="top: 22px; transform: none;">chat</span>
-                        <textarea class="input-premium" placeholder="Masz dodatkowe pytania? (opcjonalnie)"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-form-submit">
-                        WYŚLIJ 
-                    </button>
-                    <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; text-align: center; margin-top: 15px; margin-bottom: 0; line-height: 1.4;">
-    Wysyłając zapytanie, akceptujesz <a href="polityka-prywatnosci.html" style="color: var(--accent-glow); text-decoration: none;">Politykę Prywatności</a> oraz <a href="regulamin.html" style="color: var(--accent-glow); text-decoration: none;">Regulamin</a>.
-</p>
-           
-                </form>
+                        <div class="input-group">
+                            <span class="material-symbols-outlined" style="top: 22px; transform: none;">chat</span>
+                            <textarea id="input-wiadomosc" class="input-premium" placeholder="Masz dodatkowe pytania? (opcjonalnie)"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-form-submit" id="submit-btn">
+                            WYŚLIJ 
+                        </button>
+                        <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; text-align: center; margin-top: 15px; margin-bottom: 0; line-height: 1.4;">
+                            Wysyłając zapytanie, akceptujesz <a href="polityka-prywatnosci.html" style="color: var(--accent-glow); text-decoration: none;">Politykę Prywatności</a> oraz <a href="regulamin.html" style="color: var(--accent-glow); text-decoration: none;">Regulamin</a>.
+                        </p>
+                    </form>
                 
 
                 <div id="success-msg" style="display:none; text-align: center; padding: 20px 0;">
@@ -1322,148 +1321,195 @@
 
 
 
+                <script>
+                            // Logika animacji układanych kart (Stacked Cards)
+                        document.querySelectorAll('.stacked-cards-wrapper').forEach(wrapper => {
+                            const cards = Array.from(wrapper.querySelectorAll('.app-card'));
+                            
+                            wrapper.addEventListener('click', () => {
+                                // Po kliknięciu w cały blok przełączamy pozycje każdej karty
+                                cards.forEach(card => {
+                                    let currentPos = parseInt(card.getAttribute('data-pos'));
+                                    // Zmiana pozycji: z 1 spada na 3, reszta przesuwa się w górę
+                                    let nextPos = currentPos - 1;
+                                    if (nextPos < 1) nextPos = cards.length;
+                                    
+                                    card.setAttribute('data-pos', nextPos);
+                                });
+                            });
+                        });
 
+                        // Płynne przewijanie do formularza (CTA Hero)
+                        document.querySelector('.hero-cta-btn').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const targetForm = document.getElementById('formularz-kontaktowy');
+                            if (targetForm) {
+                                // Offset -100px żeby navbar nie zasłonił formularza
+                                const yOffset = -100; 
+                                const y = targetForm.getBoundingClientRect().top + window.scrollY + yOffset;
+                                window.scrollTo({top: y, behavior: 'smooth'});
+                            }
+                        });
 
-
-
-
-
-
-
-
-    <script src="script.js"></script>
-    <script>
-        
-        // Logika formularza 
-        const btnE = document.getElementById('btn-email');
-        const btnP = document.getElementById('btn-phone');
-        const wrapE = document.getElementById('wrapper-email');
-        const wrapP = document.getElementById('wrapper-phone');
-        const inE = document.getElementById('input-email');
-        const inP = document.getElementById('input-phone');
-
-        btnE.addEventListener('click', () => {
-            btnE.classList.add('active'); btnP.classList.remove('active');
-            wrapE.style.display = 'block'; wrapP.style.display = 'none';
-            inE.required = true; inP.required = false;
-        });
-
-        btnP.addEventListener('click', () => {
-            btnP.classList.add('active'); btnE.classList.remove('active');
-            wrapP.style.display = 'block'; wrapE.style.display = 'none';
-            inP.required = true; inE.required = false;
-        });
-
-        document.getElementById('premiumForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            e.target.style.display = 'none';
-            document.querySelector('.form-desc').style.display = 'none';
-            document.getElementById('success-msg').style.display = 'block';
-        });
-
-        // Logika animacji układanych kart (Stacked Cards)
-        document.querySelectorAll('.stacked-cards-wrapper').forEach(wrapper => {
-            const cards = Array.from(wrapper.querySelectorAll('.app-card'));
-            
-            wrapper.addEventListener('click', () => {
-                // Po kliknięciu w cały blok przełączamy pozycje każdej karty
-                cards.forEach(card => {
-                    let currentPos = parseInt(card.getAttribute('data-pos'));
-                    // Zmiana pozycji: z 1 spada na 3, reszta przesuwa się w górę
-                    let nextPos = currentPos - 1;
-                    if (nextPos < 1) nextPos = cards.length;
+                        // ==========================================================
+                // LOGIKA COOKIE BANNERA Z WYBOREM (RODO COMPLIANT) & KONTROLA WIDEO
+                // ==========================================================
+                document.addEventListener("DOMContentLoaded", () => {
+                    const cookieOverlay = document.getElementById('cookie-wall-overlay');
+                    const btnSaveSelected = document.getElementById('btn-cookie-save');
+                    const btnAcceptAll = document.getElementById('btn-cookie-accept-all');
+                    const toggleOptional = document.getElementById('cookie-optional');
                     
-                    card.setAttribute('data-pos', nextPos);
-                });
-            });
-        });
+                    // Nowa zmienna do sterowania filmem
+                    const heroVideo = document.getElementById('heroVideo');
 
-        // Płynne przewijanie do formularza (CTA Hero)
-        document.querySelector('.hero-cta-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetForm = document.getElementById('formularz-kontaktowy');
-            if (targetForm) {
-                // Offset -100px żeby navbar nie zasłonił formularza
-                const yOffset = -100; 
-                const y = targetForm.getBoundingClientRect().top + window.scrollY + yOffset;
-                window.scrollTo({top: y, behavior: 'smooth'});
+                    // Sprawdzenie, czy użytkownik podjął już decyzję (obecność w LocalStorage)
+                    const savedConsent = localStorage.getItem('mlogistyk_cookies_preferences');
+
+                    if (!savedConsent) {
+                        // Użytkownik nowy - pokazujemy banner
+                        // Zablokuj przewijanie tła
+                        document.body.style.overflow = 'hidden';
+                        
+                        setTimeout(() => {
+                            cookieOverlay.classList.add('is-active');
+                        }, 300);
+                    } else {
+                        // Użytkownik już zaakceptował cookies wcześniej
+                        // Odpalamy wideo od razu!
+                        if (heroVideo) {
+                            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
+                        }
+                    }
+
+                    // Funkcja zapisująca wybór i zamykająca okno
+                    function saveAndClose(optionalValue) {
+                        const preferences = {
+                            essential: true, // Zawsze true
+                            optional: optionalValue
+                        };
+                        
+                        localStorage.setItem('mlogistyk_cookies_preferences', JSON.stringify(preferences));
+                        
+                        // Animacja zamykania
+                        cookieOverlay.classList.remove('is-active');
+                        
+                        // 🔥 W TYM MIEJSCU ODPALAMY WIDEO (zanim modal całkowicie zniknie)
+                        if (heroVideo) {
+                            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
+                        }
+
+                        setTimeout(() => {
+                            cookieOverlay.style.display = 'none';
+                            document.body.style.overflow = ''; // Odblokuj przewijanie
+                        }, 600);
+
+                        // Tu możesz dodać kod odpalający skrypty analityczne, jeśli optionalValue === true
+                        // np. if(optionalValue) { initGoogleAnalytics(); }
+                    }
+
+                    // Akcja: Zapisz wybrane (uwzględnia stan suwaka)
+                    if(btnSaveSelected) {
+                        btnSaveSelected.addEventListener('click', () => {
+                            saveAndClose(toggleOptional.checked);
+                        });
+                    }
+
+                    // Akcja: Akceptuj wszystkie (nadpisuje suwak i daje zgodę na wszystko)
+                    if(btnAcceptAll) {
+                        btnAcceptAll.addEventListener('click', () => {
+                            toggleOptional.checked = true; // Dla spójności wizualnej
+                            saveAndClose(true);
+                        });
+                    }
+                });
+                </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    console.log(" 1. Skrypt startuje...");
+
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log(" 2. DOM załadowany. Szukam Supabase...");
+        
+        // Zabezpieczenie przed brakiem biblioteki
+        if (!window.supabase) {
+            console.error(" BŁĄD KRYTYCZNY: Biblioteka Supabase nie pobrała się z CDN!");
+            return;
+        }
+        console.log(" 3. Supabase załadowane pomyślnie.");
+        
+        const supabaseUrl = 'https://ejkkpiuigladcwwodyvt.supabase.co'; 
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqa2twaXVpZ2xhZGN3d29keXZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1OTM0NjgsImV4cCI6MjA4NTE2OTQ2OH0.MmXnosIOfvFINvG6oCJPxObW_dmLPxbWqCF_vftH5J8';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+        const formSupa = document.getElementById('premiumForm');
+        
+        if (!formSupa) {
+            console.error(" BŁĄD KRYTYCZNY: Nie znaleziono formularza o ID 'premiumForm'!");
+            return;
+        }
+        console.log(" 4. Formularz znaleziony. Podpinam akcję pod przycisk WYŚLIJ.");
+
+        formSupa.addEventListener('submit', async (e) => {
+            e.preventDefault(); 
+            console.log("🔥 5. PRZYCISK KLIKNIĘTY! Zatrzymano odświeżanie strony.");
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span class="material-symbols-outlined" style="animation: bounceDown 1s infinite;">sync</span> WYSYŁANIE...';
+            submitBtn.disabled = true;
+
+            const nazwaFirmy = document.getElementById('input-nazwa').value.trim();
+            const wyzwania = document.getElementById('input-wyzwania').value.trim();
+            const emailVal = document.getElementById('input-email').value.trim();
+            const phoneVal = document.getElementById('input-phone') ? document.getElementById('input-phone').value.trim() : '';
+            let wiadomoscVal = document.getElementById('input-wiadomosc').value.trim();
+            
+            const preferowanyKontakt = document.getElementById('btn-email').classList.contains('active') ? 'E-mail' : 'Telefon';
+
+            if (!wiadomoscVal) wiadomoscVal = "Brak dodatkowych pytań.";
+
+            console.log(" 6. Dane zebrane, wysyłam do Supabase...");
+
+            try {
+                const { data, error } = await supabase
+                    .from('nowe_kontakty')
+                    .insert([
+                        {
+                            nazwa_firmy: nazwaFirmy,
+                            branza: "Brak danych", 
+                            wyzwania: wyzwania,
+                            preferowany_kontakt: preferowanyKontakt,
+                            email: emailVal || null,     
+                            telefon: phoneVal || null, 
+                            wiadomosc: wiadomoscVal
+                        }
+                    ]);
+
+                if (error) {
+                    console.error(" 7. BŁĄD BAZY DANYCH:", error);
+                    throw error;
+                }
+
+                console.log(" 8. SUKCES! Dane zapisane w bazie.");
+                
+                formSupa.style.display = 'none';
+                const formDesc = document.querySelector('.form-desc');
+                if (formDesc) formDesc.style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+
+            } catch (error) {
+                alert("Błąd wysyłania (sprawdź konsolę po szczegóły).");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             }
         });
-
-
-
-// ==========================================================
-// LOGIKA COOKIE BANNERA Z WYBOREM (RODO COMPLIANT) & KONTROLA WIDEO
-// ==========================================================
-document.addEventListener("DOMContentLoaded", () => {
-    const cookieOverlay = document.getElementById('cookie-wall-overlay');
-    const btnSaveSelected = document.getElementById('btn-cookie-save');
-    const btnAcceptAll = document.getElementById('btn-cookie-accept-all');
-    const toggleOptional = document.getElementById('cookie-optional');
-    
-    // Nowa zmienna do sterowania filmem
-    const heroVideo = document.getElementById('heroVideo');
-
-    // Sprawdzenie, czy użytkownik podjął już decyzję (obecność w LocalStorage)
-    const savedConsent = localStorage.getItem('mlogistyk_cookies_preferences');
-
-    if (!savedConsent) {
-        // Użytkownik nowy - pokazujemy banner
-        // Zablokuj przewijanie tła
-        document.body.style.overflow = 'hidden';
-        
-        setTimeout(() => {
-            cookieOverlay.classList.add('is-active');
-        }, 300);
-    } else {
-        // Użytkownik już zaakceptował cookies wcześniej
-        // Odpalamy wideo od razu!
-        if (heroVideo) {
-            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
-        }
-    }
-
-    // Funkcja zapisująca wybór i zamykająca okno
-    function saveAndClose(optionalValue) {
-        const preferences = {
-            essential: true, // Zawsze true
-            optional: optionalValue
-        };
-        
-        localStorage.setItem('mlogistyk_cookies_preferences', JSON.stringify(preferences));
-        
-        // Animacja zamykania
-        cookieOverlay.classList.remove('is-active');
-        
-        // 🔥 W TYM MIEJSCU ODPALAMY WIDEO (zanim modal całkowicie zniknie)
-        if (heroVideo) {
-            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
-        }
-
-        setTimeout(() => {
-            cookieOverlay.style.display = 'none';
-            document.body.style.overflow = ''; // Odblokuj przewijanie
-        }, 600);
-
-        // Tu możesz dodać kod odpalający skrypty analityczne, jeśli optionalValue === true
-        // np. if(optionalValue) { initGoogleAnalytics(); }
-    }
-
-    // Akcja: Zapisz wybrane (uwzględnia stan suwaka)
-    if(btnSaveSelected) {
-        btnSaveSelected.addEventListener('click', () => {
-            saveAndClose(toggleOptional.checked);
-        });
-    }
-
-    // Akcja: Akceptuj wszystkie (nadpisuje suwak i daje zgodę na wszystko)
-    if(btnAcceptAll) {
-        btnAcceptAll.addEventListener('click', () => {
-            toggleOptional.checked = true; // Dla spójności wizualnej
-            saveAndClose(true);
-        });
-    }
-});
-    </script>
+    });
+</script>
 </body>
 </html>
