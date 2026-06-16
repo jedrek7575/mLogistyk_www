@@ -25,10 +25,12 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
 
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" media="print" onload="this.media='all'" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" media="print" onload="this.media='all'">
 <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
 </noscript>
 
 
@@ -751,7 +753,7 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 99999;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     opacity: 0;
@@ -767,6 +769,11 @@
 .cookie-overlay.is-active {
     opacity: 1;
     visibility: visible;
+}
+
+.cookie-overlay.is-active {
+    display: flex; /* Dopiero gdy dostanie klasę active, stanie się flexboxem */
+    opacity: 1;
 }
 
 .cookie-modal {
