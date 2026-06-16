@@ -7,7 +7,13 @@
 
     <title>mLogistyk | Prosta aplikacja do zarządzania dostawami i kierowcami</title>
     <meta name="description" content="Prosty program do zarządzania dostawami. Śledzenie GPS, elektroniczne potwierdzenie dostawy i wirtualny magazyn. Bez zbędnych integracji.">
-   
+
+
+
+    <link rel="preload" as="image" href="Images/Video/poster-hero.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="Images/Loga/logo.webp" fetchpriority="high">
+
+
     <link rel="icon" type="image/svg+xml" href="Images/Loga/logo.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Images/Loga/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Images/Loga/logo.png">
@@ -17,9 +23,14 @@
     
     <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
+
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" media="print" onload="this.media='all'" />
+<noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+</noscript>
+
 
 <link rel="canonical" href="https://mlogistyk.pl/">
 
@@ -1048,7 +1059,7 @@
 
         <div class="hero-content">
             <div class="hero-logo-large">
-                <img src="Images/Loga/logo.webp" alt="mLogistyk Magia" onerror="this.style.backgroundColor='#aa00ff'">
+                <img src="Images/Loga/logo.webp" alt="mLogistyk Magia" fetchpriority="high" onerror="this.style.backgroundColor='#aa00ff'">
                 <h1>mLogistyk</h1>
             </div>
             <p class="hero-subtitle">Zarządzaj swoją firmą, bez względu na to, gdzie jesteś.<br>Wdrażasz za darmo w&nbsp;jeden dzień. Zyskujesz pełną kontrolę na zawsze.</p>
