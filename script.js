@@ -147,3 +147,105 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+                                // Logika animacji układanych kart (Stacked Cards)
+                        document.querySelectorAll('.stacked-cards-wrapper').forEach(wrapper => {
+                            const cards = Array.from(wrapper.querySelectorAll('.app-card'));
+                            
+                            wrapper.addEventListener('click', () => {
+                                // Po kliknięciu w cały blok przełączamy pozycje każdej karty
+                                cards.forEach(card => {
+                                    let currentPos = parseInt(card.getAttribute('data-pos'));
+                                    // Zmiana pozycji: z 1 spada na 3, reszta przesuwa się w górę
+                                    let nextPos = currentPos - 1;
+                                    if (nextPos < 1) nextPos = cards.length;
+                                    
+                                    card.setAttribute('data-pos', nextPos);
+                                });
+                            });
+                        });
+
+                        // Płynne przewijanie do formularza (CTA Hero)
+                        document.querySelector('.hero-cta-btn').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const targetForm = document.getElementById('formularz-kontaktowy');
+                            if (targetForm) {
+                                // Offset -100px żeby navbar nie zasłonił formularza
+                                const yOffset = -100; 
+                                const y = targetForm.getBoundingClientRect().top + window.scrollY + yOffset;
+                                window.scrollTo({top: y, behavior: 'smooth'});
+                            }
+                        });
+
+                        // ==========================================================
+                // LOGIKA COOKIE BANNERA Z WYBOREM (RODO COMPLIANT) & KONTROLA WIDEO
+                // ==========================================================
+                document.addEventListener("DOMContentLoaded", () => {
+                    const cookieOverlay = document.getElementById('cookie-wall-overlay');
+                    const btnSaveSelected = document.getElementById('btn-cookie-save');
+                    const btnAcceptAll = document.getElementById('btn-cookie-accept-all');
+                    const toggleOptional = document.getElementById('cookie-optional');
+                    
+                    // Nowa zmienna do sterowania filmem
+                    const heroVideo = document.getElementById('heroVideo');
+
+                    // Sprawdzenie, czy użytkownik podjął już decyzję (obecność w LocalStorage)
+                    const savedConsent = localStorage.getItem('mlogistyk_cookies_preferences');
+
+                    if (!savedConsent) {
+                        // Użytkownik nowy - pokazujemy banner
+                        // Zablokuj przewijanie tła
+                        document.body.style.overflow = 'hidden';
+                        
+                        setTimeout(() => {
+                            cookieOverlay.classList.add('is-active');
+                        }, 300);
+                    } else {
+                        // Użytkownik już zaakceptował cookies wcześniej
+                        // Odpalamy wideo od razu!
+                        if (heroVideo) {
+                            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
+                        }
+                    }
+
+                    // Funkcja zapisująca wybór i zamykająca okno
+                    function saveAndClose(optionalValue) {
+                        const preferences = {
+                            essential: true, // Zawsze true
+                            optional: optionalValue
+                        };
+                        
+                        localStorage.setItem('mlogistyk_cookies_preferences', JSON.stringify(preferences));
+                        
+                        // Animacja zamykania
+                        cookieOverlay.classList.remove('is-active');
+                        
+                        // 🔥 W TYM MIEJSCU ODPALAMY WIDEO (zanim modal całkowicie zniknie)
+                        if (heroVideo) {
+                            heroVideo.play().catch(e => console.log("Przeglądarka zablokowała autoodtwarzanie:", e));
+                        }
+
+                        setTimeout(() => {
+                            cookieOverlay.style.display = 'none';
+                            document.body.style.overflow = ''; // Odblokuj przewijanie
+                        }, 600);
+
+                        // Tu możesz dodać kod odpalający skrypty analityczne, jeśli optionalValue === true
+                        // np. if(optionalValue) { initGoogleAnalytics(); }
+                    }
+
+                    // Akcja: Zapisz wybrane (uwzględnia stan suwaka)
+                    if(btnSaveSelected) {
+                        btnSaveSelected.addEventListener('click', () => {
+                            saveAndClose(toggleOptional.checked);
+                        });
+                    }
+
+                    // Akcja: Akceptuj wszystkie (nadpisuje suwak i daje zgodę na wszystko)
+                    if(btnAcceptAll) {
+                        btnAcceptAll.addEventListener('click', () => {
+                            toggleOptional.checked = true; // Dla spójności wizualnej
+                            saveAndClose(true);
+                        });
+                    }
+                });
