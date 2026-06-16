@@ -1050,10 +1050,10 @@
 
     <header class="hero-premium">
 <div class="hero-media-wrapper">
-    <video id="heroVideo" muted playsinline poster="Images/Video/poster-hero.webp" style="background-color: #1a052b;">
-        <source src="Images/Video/zoptymalizowany.webm" type="video/webm">
-        <source src="Images/Video/zoptymalizowany.mp4" type="video/mp4">
-    </video>
+<video id="heroVideo" muted playsinline poster="Images/Video/poster-hero.webp" style="background-color: #1a052b;">
+    <source data-src="Images/Video/zoptymalizowany.webm" type="video/webm">
+    <source data-src="Images/Video/zoptymalizowany.mp4" type="video/mp4">
+</video>
 </div>
         <div class="hero-overlay-fade"></div>
 
@@ -1345,7 +1345,17 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="script.js" defer></script>
-
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var video = document.getElementById('heroVideo');
+        var sources = video.getElementsByTagName('source');
+        for (var i = 0; i < sources.length; i++) {
+            sources[i].setAttribute('src', sources[i].getAttribute('data-src'));
+        }
+        video.load();
+        video.play();
+    });
+    </script>
 
 </body>
 </html>
