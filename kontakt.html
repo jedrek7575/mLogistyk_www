@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Kontakt | mLogistyk - Prosta aplikacja do zarządzania dostawami</title>
+    <meta name="description" content="Skontaktuj się z nami. Zadzwoń lub napisz. Prosty program do zarządzania dostawami, śledzenia GPS i e-podpisu.">
+
+    <link rel="preload" as="image" href="Images/Loga/logo.webp" fetchpriority="high">
+
+    <link rel="icon" type="image/svg+xml" href="Images/Loga/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/Loga/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/Loga/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/Loga/logo.png">
+    
+    <link rel="manifest" href="site.webmanifest">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
+    </noscript>
+
+    <link rel="canonical" href="https://mlogistyk.pl/kontakt.html">
+
+    <!--WIZYTÓWKA W LINKACH-->
+    <!-- Open Graph / Facebook / Messenger / Telegram -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mlogistyk.pl/kontakt.html">
+    <meta property="og:title" content="Kontakt | mLogistyk">
+    <meta property="og:description" content="Skontaktuj się z nami. Prosty program dla kierowców i dyspozytorów.">
+    <meta property="og:image" content="https://mlogistyk.pl/Images/Loga/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mlogistyk.pl/kontakt.html">
+    <meta property="twitter:title" content="Kontakt | mLogistyk">
+    <meta property="twitter:description" content="Skontaktuj się z nami. Prosty program dla kierowców i dyspozytorów.">
+    <meta property="twitter:image" content="https://mlogistyk.pl/Images/Loga/logo.png">
+
+    <style>
+        * {
+            font-style: normal !important; /* Zero kursyw w całym dokumencie */
+        }
+
+        :root {
+            --form-accent: #6b009c; /* Jasny, dynamiczny fiolet z obrazka */
+            --form-accent-dark: #2a0040; /* Bardzo ciemny fiolet / tło */
+            --accent-glow: #d77bff; /* Jaskrawy fiolet do podświetleń */
+            --bg-dark: #050505; /* Prawdziwa głęboka czerń premium */
+            --neon-accent: #aa00ff;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --nav-height: 80px;
+        }
+
+        html, body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Arial Black", Arial, sans-serif;
+            font-weight: 900;
+        }
+
+        input, select, textarea, button {
+            font-family: inherit;
+            font-weight: inherit;
+            font-size: 16px; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================
+           NAVBAR PREMIUM
+           ========================================================== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 1px solid transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(73, 13, 115, 0.291);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-left, .nav-center, .nav-right {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-left { justify-content: flex-start; }
+        .nav-center { justify-content: center; }
+        .nav-right { justify-content: flex-end; gap: 30px; }
+
+        .nav-logo img { width: 45px; height: 45px; border-radius: 10px; }
+
+        .btn-center-cta {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-center-cta:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 900;
+            transition: color 0.3s, -webkit-text-stroke 0.3s;
+            -webkit-text-stroke: 0.5px var(--text-muted);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active { 
+            color: #fff; 
+            -webkit-text-stroke: 0.5px #fff;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .burger div {
+            width: 28px; height: 2px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        /* ==========================================================
+           HEADER / HERO (KONTAKT)
+           ========================================================== */
+        .hero-contact {
+            height: 45vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-dark);
+        }
+        
+        .hero-contact::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(107, 0, 156, 0.15) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .hero-contact-content {
+            z-index: 3;
+            text-align: center;
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+
+        .hero-contact-content h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .hero-contact-content p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================
+           ASYMETRYCZNY UKŁAD
+           ========================================================== */
+        .main-split-container {
+            max-width: 90vw;
+            margin: 0 auto;
+            padding: 40px 5% 100px;
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .content-scroll-left {
+            flex: 6;
+            padding-bottom: 50px;
+            max-width: 100%;
+        }
+
+        .form-sticky-right {
+            flex: 4;
+            position: sticky;
+            top: calc(var(--nav-height) + 40px);
+            height: fit-content;
+        }
+
+        /* ==========================================================
+           KARTY KONTAKTOWE (LEWA STRONA)
+           ========================================================== */
+        .left-header {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .left-header h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .left-header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .audience-card {
+            background: rgba(20, 5, 30, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .audience-card:hover {
+            background: rgba(107, 0, 156, 0.2);
+            border-color: rgba(215, 123, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(215, 123, 255, 0.1);
+        }
+
+        .audience-card .material-symbols-outlined {
+            font-size: 40px;
+            color: var(--accent-glow);
+            background: rgba(107, 0, 156, 0.3);
+            padding: 15px;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        .audience-card h4 {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .audience-card p, .audience-card a {
+            color: #ffffff;
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin: 0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .audience-card p span {
+            font-weight: normal;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ==========================================================
+           FORMULARZ PREMIUM
+           ========================================================== */
+        .premium-form-box {
+            background: linear-gradient(145deg, rgba(20, 5, 30, 0.8), rgba(5, 5, 10, 0.9));
+            border: none;
+            border-radius: 24px;
+            padding: 40px;
+            padding-bottom: 10px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 
+                        0 0 50px rgba(58, 0, 92, 0.3), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            width: 100%; 
+            box-shadow: 0 0 20px rgba(107, 0, 156, 0.669);
+        }
+
+        .premium-form-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(107, 0, 156, 0.8);
+        }
+
+        .premium-form-box p.form-desc {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .input-group .material-symbols-outlined {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 22px;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+
+        .input-group:focus-within .material-symbols-outlined {
+            color: var(--accent-glow);
+        }
+
+        .input-premium {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px 20px 16px 48px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-premium::placeholder { color: rgba(255, 255, 255, 0.5); }
+
+        .input-premium:focus {
+            outline: none;
+            border-color: var(--form-accent);
+            box-shadow: 0 0 20px rgba(107, 0, 156, 0.4);
+            background: rgba(20, 5, 30, 0.8);
+        }
+
+        textarea.input-premium {
+            resize: none;
+            height: 110px;
+            padding-top: 20px;
+        }
+
+        .toggle-group {
+            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 6px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .toggle-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: var(--form-accent);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(107, 0, 156, 0.5);
+        }
+
+        .btn-form-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--form-accent-dark) 0%, var(--form-accent) 100%);
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(107, 0, 156, 0.6);
+            background: linear-gradient(90deg, var(--form-accent) 0%, #8c00cc 100%);
+        }
+
+        /* ==========================================================
+           STOPKA
+           ========================================================== */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 5% 40px;
+            background: linear-gradient(to top, #020202 0%, rgba(20, 5, 30, 0.8) 100%) !important;
+            border-top: 1px solid rgba(107, 0, 156, 0.3) !important;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(215, 123, 255, 0.5), transparent);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-links h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-glow) !important;
+            text-shadow: 0 0 8px rgba(215, 123, 255, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 30px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================
+           MOBILE ADAPTACJE
+           ========================================================== */
+        @media (max-width: 1000px) {
+            .nav-menu {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100vh;
+                background: rgba(5, 5, 5, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 30px 0;
+                gap: 25%;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: all 0.3s;
+            }
+            .nav-menu.active {
+                opacity: 1; visibility: visible; transform: translateY(0);
+            }
+            .burger { display: flex; }
+            .burger.active div:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .burger.active div:nth-child(2) { opacity: 0; }
+            .burger.active div:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .nav-center { flex: 2; }
+            .btn-center-cta { padding: 8px 16px; font-size: 0.85rem; }
+
+            .main-split-container {
+                flex-direction: column;
+                padding: 20px 15px 100px 15px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .form-sticky-right {
+                position: static;
+                width: 100%;
+                order: 1;
+                margin-bottom: 40px;
+            }
+            .premium-form-box {
+                width: 100%;
+                padding: 30px 15px 15px 15px;
+                border-radius: 16px;
+            }
+            .audience-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
+            }
+            .audience-card .material-symbols-outlined { margin-right: 0; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        /* ==========================================================
+           COOKIE BANNER
+           ========================================================== */
+        .cookie-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 10, 0.85);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 99999; display: none; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+            padding: 20px; box-sizing: border-box; overflow-y: auto; 
+        }
+        .cookie-overlay.is-active { opacity: 1; visibility: visible; display: flex; }
+        .cookie-modal {
+            background: linear-gradient(145deg, rgba(20, 5, 30, 0.95), rgba(5, 5, 10, 0.95));
+            border: 1px solid rgba(107, 0, 156, 0.5);
+            border-radius: 24px; padding: 35px; max-width: 500px; width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(107, 0, 156, 0.3);
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: auto; max-height: calc(100vh - 40px); overflow-y: auto;
+        }
+        .cookie-overlay.is-active .cookie-modal { transform: translateY(0) scale(1); }
+        .cookie-modal::-webkit-scrollbar { width: 6px; }
+        .cookie-modal::-webkit-scrollbar-track { background: transparent; }
+        .cookie-modal::-webkit-scrollbar-thumb { background: rgba(215, 123, 255, 0.3); border-radius: 10px; }
+        .cookie-modal::-webkit-scrollbar-thumb:hover { background: var(--form-accent); }
+        .cookie-icon { font-size: 40px !important; color: var(--accent-glow); margin-bottom: 15px; text-shadow: 0 0 15px rgba(215, 123, 255, 0.5); }
+        .cookie-modal h3 { color: #ffffff; font-size: 1.6rem; margin-bottom: 10px; }
+        .cookie-modal p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px; }
+        .cookie-modal p a { color: var(--accent-glow); text-decoration: none; border-bottom: 1px solid rgba(215, 123, 255, 0.4); }
+        .cookie-options-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; text-align: left; }
+        .cookie-row { display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 15px 20px; cursor: pointer; transition: background 0.3s; }
+        .cookie-row:hover { background: rgba(107, 0, 156, 0.15); }
+        .cookie-info { display: flex; flex-direction: column; gap: 4px; padding-right: 15px; }
+        .cookie-info strong { color: #fff; font-size: 1rem; }
+        .cookie-info span { color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; line-height: 1.3; }
+        .cookie-toggle-wrap input { display: none; }
+        .custom-toggle { display: block; width: 46px; height: 24px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; position: relative; transition: all 0.3s ease; flex-shrink: 0; }
+        .custom-toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #ffffff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .cookie-toggle-wrap input:checked + .custom-toggle { background: var(--form-accent); box-shadow: 0 0 10px rgba(107, 0, 156, 0.6); }
+        .cookie-toggle-wrap input:checked + .custom-toggle::after { transform: translateX(22px); }
+        .cookie-toggle-wrap input:disabled + .custom-toggle { opacity: 0.6; cursor: not-allowed; }
+        .cookie-row:has(input:disabled) { cursor: default; }
+        .cookie-actions { display: flex; flex-direction: column; gap: 10px; }
+        .cookie-btn-primary { margin-top: 0; font-weight: 900; }
+        .cookie-btn-secondary { background: transparent; border: none; color: rgba(255, 255, 255, 0.6); padding: 12px; font-size: 0.9rem; cursor: pointer; transition: color 0.3s; }
+        .cookie-btn-secondary:hover { color: #fff; text-decoration: underline; }
+        @media (max-width: 1000px) {
+            .cookie-overlay { padding: 15px; background: rgba(5, 5, 10, 0.95); backdrop-filter: none; }
+            .cookie-modal { padding: 25px 20px; border-radius: 20px; }
+            .cookie-icon { font-size: 32px !important; margin-bottom: 10px; }
+            .cookie-modal h3 { font-size: 1.35rem; }
+            .cookie-modal p { font-size: 0.85rem; margin-bottom: 20px; }
+            .cookie-options-container { gap: 10px; margin-bottom: 20px; }
+            .cookie-row { padding: 12px 15px; border-radius: 12px; }
+            .cookie-info strong { font-size: 0.9rem; }
+            .cookie-info span { font-size: 0.75rem; }
+            .cookie-btn-primary { padding: 14px; font-size: 0.95rem; }
+            .cookie-btn-secondary { padding: 10px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="globalNavbar">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">
+                <img src="Images/Loga/logo-white.webp" alt="Logo">
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <a href="https://app.mlogistyk.pl" class="btn-center-cta">ZALOGUJ SIĘ</a>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="filozofia.html">Filozofia</a></li>
+                <li><a href="o-nas.html">O nas</a></li>
+                <li><a href="kontakt.html" class="active">Kontakt</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-contact">
+        <div class="hero-contact-content">
+            <h1>Kontakt</h1>
+            <p>Jesteśmy tu, aby odpowiedzieć na Twoje pytania i pomóc Ci wdrożyć mLogistyka.</p>
+        </div>
+    </header>
+
+    <main class="main-split-container">
+        <div class="content-scroll-left">
+            <div class="left-header">
+                <h2>Porozmawiajmy o wdrożeniu</h2>
+                <p>Wybierz najwygodniejszą dla siebie formę kontaktu. Odpowiadamy najszybciej jak to możliwe.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="audience-card">
+                    <span class="material-symbols-outlined">mail</span>
+                    <div>
+                        <h4>Adres E-mail</h4>
+                        <p><a href="mailto:biuro@mlogistyk.pl">biuro@mlogistyk.pl</a></p>
+                    </div>
+                </div>
+                
+                <div class="audience-card">
+                    <span class="material-symbols-outlined">call</span>
+                    <div>
+                        <h4>Telefon</h4>
+                        <p><a href="tel:+48500156450">+48 500 156 450</a></p>
+                    </div>
+                </div>
+                
+                <div class="audience-card">
+                    <span class="material-symbols-outlined">domain</span>
+                    <div>
+                        <h4>Dane firmy</h4>
+                        <p>Omnis Anna Kiersznowska-Jąderko<br>
+                        <span>ul. Podgródkowa 59, 42-470 Dziewki<br>
+                        NIP: 569-157-06-12</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <div class="form-sticky-right" id="formularz-kontaktowy">
+            <div class="premium-form-box">
+                <h3>Wyślij nam wiadomość</h3>
+                <p class="form-desc" style="color: var(--accent-glow); font-weight: bold; margin-top: 5%; font-size: 0.8rem; text-transform: uppercase;">Zapytaj o darmowe konto testowe lub cennik.</p>
+                
+                <form id="premiumForm">
+                    <div class="input-group">
+                        <span class="material-symbols-outlined">domain</span>
+                        <input type="text" id="input-nazwa" class="input-premium" placeholder="Nazwa firmy" aria-label="Nazwa firmy" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <span class="material-symbols-outlined">track_changes</span>
+                        <input type="text" id="input-wyzwania" class="input-premium" placeholder="Temat / Cel wdrożenia" aria-label="Temat wdrożenia" required>
+                    </div>
+                    
+                    <div class="toggle-group">
+                        <button type="button" class="toggle-btn active" id="btn-email" aria-pressed="true" aria-label="Wybierz kontakt przez E-mail">
+                            <span class="material-symbols-outlined">mail</span> E-mail
+                        </button>
+                        <button type="button" class="toggle-btn" id="btn-phone" aria-pressed="false" aria-label="Wybierz kontakt przez telefon">
+                            <span class="material-symbols-outlined">call</span> Telefon
+                        </button>
+                    </div>
+
+                    <div id="wrapper-email" class="input-group">
+                        <span class="material-symbols-outlined">alternate_email</span>
+                        <input type="email" class="input-premium" id="input-email" placeholder="adres@firmowy.pl" aria-label="Adres email" required>
+                    </div>
+                    
+                    <div id="wrapper-phone" class="input-group" style="display: none;">
+                        <span class="material-symbols-outlined">smartphone</span>
+                        <input type="tel" class="input-premium" id="input-phone" placeholder="+48 000 000 000" aria-label="Numer telefonu">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="material-symbols-outlined" style="top: 22px; transform: none;">chat</span>
+                        <textarea id="input-wiadomosc" class="input-premium" placeholder="Treść wiadomości..." aria-label="Dodatkowa wiadomość"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-form-submit" id="submit-btn">
+                        WYŚLIJ 
+                    </button>
+                    <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; text-align: center; margin-top: 15px; margin-bottom: 0; line-height: 1.4;">
+                        Wysyłając zapytanie, akceptujesz <a href="polityka-prywatnosci.html" style="color: var(--accent-glow); text-decoration: none;">Politykę Prywatności</a> oraz <a href="regulamin.html" style="color: var(--accent-glow); text-decoration: none;">Regulamin</a>.
+                    </p>
+                </form>
+
+                <div id="success-msg" style="display:none; text-align: center; padding: 20px 0;">
+                    <span class="material-symbols-outlined" style="font-size: 4rem; color: #b755ff;">check_circle</span>
+                    <h4 style="color: #fff; font-size: 1.5rem; margin-top: 10px;">Dziękujemy!</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Wiadomość została wysłana, skontaktujemy się niebawem.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <img src="Images/Loga/logo-white.webp" alt="mLogistyk" width="35" height="35" style="border-radius: 8px;">
+                    <span style="font-size: 1.4rem;">mLogistyk</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Przenosimy logistykę w wymiar cyfrowy.<br>Prosto, bezpiecznie, bezkompromisowo.</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                    <p>Omnis Anna Kiersznowska-Jąderko</p>
+                    <p>NIP: 569-157-06-12</p>
+                    <p>ul. Podgródkowa 59, 42-470 Dziewki</p>
+                    <p>500 156 450</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platforma</h4>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="filozofia.html">Filozofia</a></li>
+                    <li><a href="o-nas.html">O nas</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legalne</h4>
+                <ul>
+                    <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+                    <li><a href="regulamin.html">Regulamin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 mLogistyk. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-wall-overlay" class="cookie-overlay">
+        <div class="cookie-modal">
+            <span class="material-symbols-outlined cookie-icon">tune</span>
+            <h3>Ustawienia Prywatności</h3>
+            <p>
+                Dbamy o Twoje dane. Wybierz, jakie informacje możemy zbierać. 
+                Szczegóły znajdziesz w naszej <a href="polityka-prywatnosci.html">Polityce Prywatności</a>.
+            </p>
+            
+            <div class="cookie-options-container">
+                <label class="cookie-row">
+                    <div class="cookie-info">
+                        <strong>Niezbędne do działania</strong>
+                        <span>Wymagane do utrzymania sesji i podstawowych funkcji serwisu.</span>
+                    </div>
+                    <div class="cookie-toggle-wrap">
+                        <input type="checkbox" id="cookie-essential" checked disabled>
+                        <span class="custom-toggle"></span>
+                    </div>
+                </label>
+
+                <label class="cookie-row">
+                    <div class="cookie-info">
+                        <strong>Analityka i Marketing</strong>
+                        <span>Pomagają nam ulepszać aplikację i mierzyć skuteczność reklam.</span>
+                    </div>
+                    <div class="cookie-toggle-wrap">
+                        <input type="checkbox" id="cookie-optional">
+                        <span class="custom-toggle"></span>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="cookie-actions">
+                <button id="btn-cookie-save" class="cookie-btn-secondary">Zapisz wybrane</button>
+                <button id="btn-cookie-accept-all" class="btn-form-submit cookie-btn-primary">
+                    AKCEPTUJ WSZYSTKIE <span class="material-symbols-outlined">done_all</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
